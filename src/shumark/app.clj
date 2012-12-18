@@ -4,17 +4,18 @@
         [hiccup [core :only [html]] [def :only [defhtml]]
          [page :only [html5 include-css include-js]]
          [element :only [link-to]]
-         [form :only [form-to label text-field]]])
+         [form :only [form-to label text-field]]]
+        [valip.core :only [validate]])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [compojure.response :as response]
             [clojure.data.json :as json]
+            [clojure.string :as str]
             [shumark.model.bookmark :as model]))
 
 (defn- js []
   "
 function addBmModalForm(formName,url,msgName,modalBodyName) {
-  alert('js');
   var form_data = $('#'+formName).serialize();
   $.ajax({
     type: 'Post',
@@ -36,18 +37,22 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
 }
 ")
 
-(defhtml add-bm-modal-body-form []
+(defn control-error
+  "Take coll of errors and join them together in inline help. (from Remix)"
+  [errors]
+  (when-not (empty? errors) [:span.help-inline (str/join \space errors)]))
+
+(defhtml add-bm-modal-body-form [& [params errors]]
   (html
    [:div#addBmModalMsg]
    (for [[k l] [[:name "Name"] [:url "URL"]]]
-     [:div.control-group
+     [(if (empty? (k errors)) :div.control-group :div.control-group.error)
       (label {:class :control-label} k l)
-      [:div.controls (text-field k)]])
-   ))
+      [:div.controls (text-field k (k params)) (control-error (k errors))]])))
 
 (defhtml add-bm-modal []
   (html
-   (form-to {:id :addBmModalForm :class :form-horizontal :onsubmit "addBmModalForm('addBmModalForm','/add','addBmModalMsg','addModalBody');return false;"} [:post "#"]
+   (form-to {:id :addBmModalForm :class :form-horizontal :onsubmit "addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"} [:post "#"]
             [:div.modal.hide.fade {:id :add-bm-modal :tabindex -1 :role :dialog :aria-labelledby :add-bm-modal-label :aria-hidden :true}
             [:div.modal-header
              [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
@@ -88,12 +93,17 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
 
 (defroutes routes
   (GET "/" [] (home-page))
-  (GET "/add" [name url :as {params :params}] (do (model/insert {:user_id 1 :name name :url url}) (redirect "/")))
-  (POST "/add" [name url :as {params :params}] (do (prn "params=" params)
+  (POST "/add" [name url :as {params :params}] (if-let [errors (validate params
+                                                                         [:url (complement str/blank?) "URL can't be blank."])]
+                                                 {:status 200
+                                                  :headers {"Content-Type" "application/json"}
+                                                  :body (json/write-str {:errors errors :html (add-bm-modal-body-form params errors)})}
+                                                (do
                                                  (model/insert {:user_id 1 :name name :url url})
-                                                   {:status 200
-                                                    :headers {"Content-Type" "application/json"}
-                                                    :body (json/write-str {:errors nil})}))
+                                                 {:status 200
+                                                  :headers {"Content-Type" "application/json"}
+                                                  :body (json/write-str {:errors nil})})))
+        
   (route/resources "/")
   (route/not-found "Page not found"))
 
