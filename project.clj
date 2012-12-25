@@ -13,4 +13,5 @@
                  [compojure "1.1.3"]
                  [hiccup "1.0.2"]
                  [valip "0.2.0"]]
-  )
+  :plugins [[environ/environ.lein "0.3.0"]]
+  :hooks [environ.leiningen.hooks])

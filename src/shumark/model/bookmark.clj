@@ -2,7 +2,7 @@
   (use [environ.core])
   (:require [clojure.java.jdbc :as jdbc]))
 
-(def db-url (env :database-url))
+(def db-url (env :DATABASE_URL))
 
 (defn select []
   (prn "here:" db-url)

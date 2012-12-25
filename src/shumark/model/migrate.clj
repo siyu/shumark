@@ -31,3 +31,5 @@ create table if not exists bookmark (
   (print "Migrating database...") (flush)
   (migrate)
   (println " done."))
+
+;(-main)
