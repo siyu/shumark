@@ -1,14 +1,9 @@
 (ns shumark.model.migrate
-  (:require [clojure.java.jdbc :as jdbc]))
-
-
-(def db {:subprotocol "postgresql"
-         :subname "//localhost:5432/shumark"
-         :user "siyu"
-         :password ""})
+  (:require [clojure.java.jdbc :as jdbc]
+            [shumark.model.db :as db]))
 
 (defn migrate []
-  (jdbc/with-connection db
+  (jdbc/with-connection db/db-url
     (jdbc/do-commands "
 drop table if exists bookmark_user;" "
 drop table if exists bookmark;" "
