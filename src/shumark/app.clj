@@ -4,7 +4,7 @@
         [hiccup [core :only [html]] [def :only [defhtml]]
          [page :only [html5 include-css include-js]]
          [element :only [link-to]]
-         [form :only [form-to label text-field]]]
+         [form :only [form-to label text-field reset-button submit-button]]]
         [valip.core :only [validate]])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
@@ -59,8 +59,8 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
              [:h3#add-bm-modal-label "Add a Bookmark"]]
             [:div#addBmModalBody.modal-body (add-bm-modal-body-form)]
             [:div.modal-footer
-             [:button.btn {:data-dismiss :modal :aria-hidden :true} "Cancel"]
-             [:button.btn.btn-primary "Add Bookmark"]]])))
+             (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
+             (submit-button {:class "btn btn-primary"} "Add Bookmark")]])))
 
 (defn- home-page []
   (html5 {:lang :en}
