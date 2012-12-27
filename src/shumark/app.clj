@@ -85,7 +85,7 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
             [:div.span12
              [:div.well
               [:ul
-               (for [bm (model/select)] [:li (:url bm)])]]]]
+               (for [bm (model/select)] [:li (link-to (:url bm) (:name bm))])]]]]
            (add-bm-modal)
            [:hr]
            [:footer [:p "© Si Yu 2012"]]]          
