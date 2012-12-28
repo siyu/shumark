@@ -4,7 +4,7 @@
         [hiccup [core :only [html]] [def :only [defhtml]]
          [page :only [html5 include-css include-js]]
          [element :only [link-to]]
-         [form :only [form-to label text-field reset-button submit-button]]]
+         [form :only [form-to label hidden-field text-field reset-button submit-button]]]
         [valip.core :only [validate]])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
@@ -35,6 +35,21 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
     }
   });
 }
+
+function delBmModalForm(formId,url,msgId) {
+  var form_data = $('#'+formId).serialize();
+  $.ajax({
+    type: 'Post',
+    url: url,
+    dataType: 'json',
+    data: form_data,
+    error: function() {
+      $('#'+msgId).text('Error connecting to server!!');
+    },
+    success: function(data) {
+    }
+  });
+}
 ")
 
 (defn control-error
@@ -62,6 +77,35 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
              (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
              (submit-button {:class "btn btn-primary"} "Add Bookmark")]])))
 
+(defn- del-bm-modal-id [bm]
+  (str "del-bm-modal-" (:bookmark_id bm)))
+
+(defn- edit-del-span-id [bm]
+  "id used to remove the edit and delete span after delete."
+  (str "edit-del-span-" (:bookmark_id bm)))
+
+(defhtml del-bm-modal [bm]
+  (let [bm-id (:bookmark_id bm)
+        form-id (str "delBmModalForm" bm-id)
+        msg-id (str "msgId" bm-id)
+        onsubmit-str (str "delBmModalForm('" form-id "'),'/delete','" msg-id "');return false;")]
+    (form-to {:id form-id :class :form-horizontal :onsubmit onsubmit-str} [:post "#"]
+             (hidden-field :bm-edit-del-span-id (edit-del-span-id bm))
+             [:div.modal.hide.fade {:id (del-bm-modal-id bm) :tabindex -1 :role :dialog :aria-labelledby :del-bm-modal-label :aria-hidden :true}
+              [:div.modal-header
+               [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
+               [:h3#del-bm-modal-label "Delete"]]
+              [:div.modal-body
+               [:div {:id msg-id}]
+               [:h5 "Are you sure want to delete this bookmark?"]
+               [:h5 (str "[" (:name bm)) " - " (:url bm) "]"]]
+              [:div.modal-footer
+               (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
+               (submit-button {:class "btn btn-primary"} "Delete")]])))
+
+(defhtml del-bm-modals [bms]
+  (map del-bm-modal bms))
+
 (defn- home-page []
   (html5 {:lang :en}
          [:head
@@ -84,14 +128,18 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
            [:div.row-fluid
             [:div.span2]
             [:div.span8
-             [:div.well
-              [:table
-               (for [bm (model/select)]
-                 [:tr [:td {:style "padding-right:0.5em"} [:i.icon-star-empty]]
-                  [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
-                   [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
-                   [:span {:color :orange} (:url bm)]
-                   [:span "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;" [:i.icon-remove] ]]])]]]
+             (let [bms (model/select)]
+               (html
+                [:div.well
+                 [:table
+                  (for [bm bms]
+                    [:tr [:td {:style "padding-right:0.5em"} [:i.icon-star-empty]]
+                     [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
+                      [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
+                      [:span {:color :orange} (:url bm)]
+                      [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;"
+                       (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
+                (del-bm-modals bms)))]
             [:div.span2]]
            (add-bm-modal)
            [:hr]
