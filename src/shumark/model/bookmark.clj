@@ -15,8 +15,8 @@
 
 (defn update [m] (insert m))
 
-(defn delete [m]
+(defn delete [bookmark-id]
   (jdbc/with-connection db/db-url
     (jdbc/delete-rows :bookmark
-                      ["bookmark_id=?" (:bookmark_id m)])))
+                      ["bookmark_id=?" bookmark-id])))
 

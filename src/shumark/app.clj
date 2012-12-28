@@ -47,6 +47,14 @@ function delBmModalForm(formId,url,msgId) {
       $('#'+msgId).text('Error connecting to server!!');
     },
     success: function(data) {
+      if (data.errors) {
+        $('#'+msgId).text(data.errors);
+      }
+      else {
+        var modalId = $('#'+formId+ ' input[name=modalId]').val();
+        $('#'+modalId).modal('hide');
+        $('#'+data.editDelSpanId).remove();        
+      }
     }
   });
 }
@@ -88,10 +96,13 @@ function delBmModalForm(formId,url,msgId) {
   (let [bm-id (:bookmark_id bm)
         form-id (str "delBmModalForm" bm-id)
         msg-id (str "msgId" bm-id)
-        onsubmit-str (str "delBmModalForm('" form-id "'),'/delete','" msg-id "');return false;")]
+        modal-id (del-bm-modal-id bm)
+        onsubmit-str (str "delBmModalForm('" form-id "','/delete','" msg-id "');return false;")]
     (form-to {:id form-id :class :form-horizontal :onsubmit onsubmit-str} [:post "#"]
-             (hidden-field :bm-edit-del-span-id (edit-del-span-id bm))
-             [:div.modal.hide.fade {:id (del-bm-modal-id bm) :tabindex -1 :role :dialog :aria-labelledby :del-bm-modal-label :aria-hidden :true}
+             (hidden-field :bookmark-id bm-id)
+             (hidden-field :modalId modal-id)
+             (hidden-field :edit-del-span-id (edit-del-span-id bm))
+             [:div.modal.hide.fade {:id modal-id :tabindex -1 :role :dialog :aria-labelledby :del-bm-modal-label :aria-hidden :true}
               [:div.modal-header
                [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
                [:h3#del-bm-modal-label "Delete"]]
@@ -158,7 +169,15 @@ function delBmModalForm(formId,url,msgId) {
                                                  {:status 200
                                                   :headers {"Content-Type" "application/json"}
                                                   :body (json/write-str {:errors nil})})))
-        
+  (POST "/delete" [bookmark-id edit-del-span-id] (try (do
+                                                        (model/delete (Long. bookmark-id))
+                                                        {:status 200
+                                                         :headers {"Content-Type" "application/json"}
+                                                         :body (json/write-str {:errors nil :editDelSpanId edit-del-span-id})})
+                                                      (catch Exception e
+                                                        {:status 200
+                                                         :headers {"Content-Type" "application/json"}
+                                                         :body (json/write-str {:errors (str e)})})))        
   (route/resources "/")
   (route/not-found "Page not found"))
 
