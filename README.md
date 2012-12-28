@@ -1,7 +1,6 @@
 # shumark
 
-A bookmarking web site.
-
+A bookmarking web site.  http://shumark.herokuapp.com/
 
 ## License
 
