@@ -87,7 +87,7 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
              [:div.well
               [:table
                (for [bm (model/select)]
-                 [:tr [:td [:i.icon-bookmark]]
+                 [:tr [:td {:style "padding-right:0.5em"} [:i.icon-star-empty]]
                   [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
                    [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
                    [:span {:color :orange} (:url bm)]
