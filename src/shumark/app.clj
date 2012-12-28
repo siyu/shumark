@@ -66,26 +66,33 @@ function addBmModalForm(formName,url,msgName,modalBodyName) {
   (html5 {:lang :en}
          [:head
           [:meta {:charset :utf-8}]
-          [:title "Shumarkt"]
+          [:title "Shumark"]
           [:meta {:name :viewport :content "width=device-width, initial-scale=1.0"}]
           (include-css "/css/bootstrap.css" "/css/bootstrap-responsive.css")
           [:script {:type "text/javascript"} (js)]]
          [:body 
           [:div.navbar.navbar-inverse.navbar-static-top
            [:div.navbar-inner
-            [:div.container
+            [:div.container-fluid
              [:a.btn.btn-navbar {:data-toggle :collapse :data-target :.nav-collapse}
               (repeat 3 [:span.icon-bar])]
              (link-to {:class :brand} "/" "Shumark")
              [:div.nav-collapse.collapse
               [:ul.nav
                [:li (link-to {:data-toggle :modal} "#add-bm-modal" "Add Bookmark")]]]]]]
-          [:div.container
-           [:div.row
-            [:div.span12
+          [:div.container-fluid
+           [:div.row-fluid
+            [:div.span2]
+            [:div.span8
              [:div.well
-              [:ul
-               (for [bm (model/select)] [:li (link-to (:url bm) (:name bm))])]]]]
+              [:table
+               (for [bm (model/select)]
+                 [:tr [:td [:i.icon-bookmark]]
+                  [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
+                   [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
+                   [:span {:color :orange} (:url bm)]
+                   [:span "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;" [:i.icon-remove] ]]])]]]
+            [:div.span2]]
            (add-bm-modal)
            [:hr]
            [:footer [:p "© Si Yu 2012"]]]          

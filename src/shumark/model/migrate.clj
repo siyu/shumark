@@ -27,4 +27,6 @@ create table if not exists bookmark (
   (migrate)
   (println " done."))
 
-;(-main)
+(comment
+  ;; CREATE DATABASE SHUMARK;
+  (-main))
