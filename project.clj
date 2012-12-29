@@ -12,6 +12,7 @@
                  [clj-time "0.4.4"]
                  [compojure "1.1.3"]
                  [hiccup "1.0.2"]
-                 [valip "0.2.0"]]
+                 [valip "0.2.0"]
+                 [ring-anti-forgery "0.2.1"]]
   :plugins [[environ/environ.lein "0.3.0"]]
   :hooks [environ.leiningen.hooks])

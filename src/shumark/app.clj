@@ -5,7 +5,9 @@
          [page :only [html5 include-css include-js]]
          [element :only [link-to]]
          [form :only [form-to label hidden-field text-field reset-button submit-button]]]
-        [valip.core :only [validate]])
+        [valip.core :only [validate]]
+        [ring.util.anti-forgery]
+        [ring.middleware.anti-forgery])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [compojure.response :as response]
@@ -77,6 +79,7 @@ function delBmModalForm(formId,url,msgId) {
 (defhtml add-bm-modal []
   (html
    (form-to {:id :addBmModalForm :class :form-horizontal :onsubmit "addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"} [:post "#"]
+            (anti-forgery-field)
             [:div.modal.hide.fade {:id :add-bm-modal :tabindex -1 :role :dialog :aria-labelledby :add-bm-modal-label :aria-hidden :true}
             [:div.modal-header
              [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
@@ -100,6 +103,7 @@ function delBmModalForm(formId,url,msgId) {
         modal-id (del-bm-modal-id bm)
         onsubmit-str (str "delBmModalForm('" form-id "','/delete','" msg-id "');return false;")]
     (form-to {:id form-id :class :form-horizontal :onsubmit onsubmit-str} [:post "#"]
+             (anti-forgery-field)
              (hidden-field :bookmark-id bm-id)
              (hidden-field :modal-id modal-id)
              (hidden-field :edit-del-span-id (edit-del-span-id bm))
@@ -177,4 +181,5 @@ function delBmModalForm(formId,url,msgId) {
 
 
 (def app (-> routes
+             wrap-anti-forgery
              handler/site))
