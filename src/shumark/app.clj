@@ -51,9 +51,10 @@ function delBmModalForm(formId,url,msgId) {
         $('#'+msgId).text(data.errors);
       }
       else {
-        var modalId = $('#'+formId+ ' input[name=modalId]').val();
+        var modalId = $('#'+formId+ ' input[name=modal-id]').val();
         $('#'+modalId).modal('hide');
-        $('#'+data.editDelSpanId).remove();        
+        var editDelSpanId = $('#'+formId+ ' input[name=edit-del-span-id]').val();
+        $('#'+editDelSpanId).remove();        
       }
     }
   });
@@ -94,13 +95,13 @@ function delBmModalForm(formId,url,msgId) {
 
 (defhtml del-bm-modal [bm]
   (let [bm-id (:bookmark_id bm)
-        form-id (str "delBmModalForm" bm-id)
-        msg-id (str "msgId" bm-id)
+        form-id (str "del-bm-modal-form-" bm-id)
+        msg-id (str "msg-id-" bm-id)
         modal-id (del-bm-modal-id bm)
         onsubmit-str (str "delBmModalForm('" form-id "','/delete','" msg-id "');return false;")]
     (form-to {:id form-id :class :form-horizontal :onsubmit onsubmit-str} [:post "#"]
              (hidden-field :bookmark-id bm-id)
-             (hidden-field :modalId modal-id)
+             (hidden-field :modal-id modal-id)
              (hidden-field :edit-del-span-id (edit-del-span-id bm))
              [:div.modal.hide.fade {:id modal-id :tabindex -1 :role :dialog :aria-labelledby :del-bm-modal-label :aria-hidden :true}
               [:div.modal-header
@@ -159,25 +160,18 @@ function delBmModalForm(formId,url,msgId) {
 
 (defroutes routes
   (GET "/" [] (home-page))
-  (POST "/add" [name url :as {params :params}] (if-let [errors (validate params
-                                                                         [:url (complement str/blank?) "URL can't be blank."])]
-                                                 {:status 200
-                                                  :headers {"Content-Type" "application/json"}
-                                                  :body (json/write-str {:errors errors :html (add-bm-modal-body-form params errors)})}
-                                                (do
-                                                 (model/insert {:user_id 1 :name name :url url})
-                                                 {:status 200
-                                                  :headers {"Content-Type" "application/json"}
-                                                  :body (json/write-str {:errors nil})})))
-  (POST "/delete" [bookmark-id edit-del-span-id] (try (do
-                                                        (model/delete (Long. bookmark-id))
-                                                        {:status 200
-                                                         :headers {"Content-Type" "application/json"}
-                                                         :body (json/write-str {:errors nil :editDelSpanId edit-del-span-id})})
-                                                      (catch Exception e
-                                                        {:status 200
-                                                         :headers {"Content-Type" "application/json"}
-                                                         :body (json/write-str {:errors (str e)})})))        
+  (POST "/add" [name url :as {params :params}]
+        (if-let [errors (validate params
+                                  [:url (complement str/blank?) "URL can't be blank."])]
+          (json/write-str {:errors errors :html (add-bm-modal-body-form params errors)})
+          (do
+            (model/insert {:user_id 1 :name name :url url})
+            (json/write-str {}))))
+  (POST "/delete" [bookmark-id]
+        (try (do
+               (model/delete (Long. bookmark-id))
+               (json/write-str {}))
+             (catch Exception e (json/write-str {:errors (str e)}))))        
   (route/resources "/")
   (route/not-found "Page not found"))
 
