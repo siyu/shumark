@@ -1,5 +1,5 @@
 (ns shumark.app
-  (:use [ring.util.response :only [redirect response]]
+  (:use [ring.util.response :only [redirect response content-type]]
         [compojure [core :only [defroutes GET POST ANY]]]
         [hiccup [core :only [html]] [def :only [defhtml]]
          [page :only [html5 include-css include-js]]
@@ -162,20 +162,23 @@ function delBmModalForm(formId,url,msgId) {
            [:footer [:p "© Si Yu 2012"]]]          
           (include-js "/js/jquery.js" "/js/bootstrap.js")]))
 
+(defn- json-resp [x]
+  (-> x json/write-str response (content-type "application/json")))
+
 (defroutes routes
   (GET "/" [] (home-page))
   (POST "/add" [name url :as {params :params}]
         (if-let [errors (validate params
                                   [:url (complement str/blank?) "URL can't be blank."])]
-          (json/write-str {:errors errors :html (add-bm-modal-body-form params errors)})
+          (json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
           (do
             (model/insert {:user_id 1 :name name :url url})
-            (json/write-str {}))))
+            (json-resp {}))))
   (POST "/delete" [bookmark-id]
         (try (do
                (model/delete (Long. bookmark-id))
-               (json/write-str {}))
-             (catch Exception e (json/write-str {:errors (str e)}))))        
+               (json-resp {}))
+             (catch Exception e (json-resp {:errors (str e)}))))        
   (route/resources "/")
   (route/not-found "Page not found"))
 
