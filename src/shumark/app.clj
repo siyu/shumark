@@ -189,7 +189,8 @@ function delBmModalForm(formId,url,msgId) {
   "If it is a new user create an account and redirect to bookmark page,
    else redirect to bookmark page"
   [req]
-  (let [user (user/insert-if-not-exist (get-in req [:session :auth-map :email]))]
+  (let [user (user/insert-if-not-exist (get-in req [:session :auth-map :email]))
+        _ (println "login-success-handler: user=" user)]
     (assoc (redirect "/bookmark")
       :session (assoc (:session req) :user user))))
 

@@ -35,7 +35,8 @@
     (if verified-id
       (let [auth-success (.getAuthResponse verification)
             fetch-resp (.getExtension auth-success AxMessage/OPENID_NS_AX)
-            email (.getAttributeValue fetch-resp "email")]
+            email (.getAttributeValue fetch-resp "email")
+            _ (println "verify: email=" email)]
         (-> req
             (assoc :session (assoc session 
                               :openid-discovered nil
