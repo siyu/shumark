@@ -13,7 +13,8 @@
             [compojure.response :as response]
             [clojure.data.json :as json]
             [clojure.string :as str]
-            [shumark.model.bookmark :as model]))
+            [shumark.model.bookmark :as model]
+            [shumark.openid :as openid]))
 
 (defn- js []
   "
@@ -152,7 +153,7 @@ function delBmModalForm(formId,url,msgId) {
                     [:tr [:td {:style "padding-right:0.5em"} [:i.icon-star-empty]]
                      [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
                       [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
-                      [:span {:color :orange} (:url bm)]
+                      [:span (:url bm)]
                       [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;"
                        (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
                 (del-bm-modals bms)))]
@@ -165,8 +166,18 @@ function delBmModalForm(formId,url,msgId) {
 (defn- json-resp [x]
   (-> x json/write-str response (content-type "application/json")))
 
+(defn- login-success-handler
+  "If it is a new user create an account and redirect to bookmark page,
+   else redirect to bookmark page"
+  [req])
+
+(defn- login-failure-handler [req]
+  (redirect "/"))
+
 (defroutes routes
   (GET "/" [] (home-page))
+  (GET "/login" [:as req] (openid/redirect->openid req "/openid-return"))
+  (GET "/openid-return" [:as req] (openid/verify req login-success-handler login-failure-handler))
   (POST "/add" [name url :as {params :params}]
         (if-let [errors (validate params
                                   [:url (complement str/blank?) "URL can't be blank."])]
