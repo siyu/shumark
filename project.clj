@@ -13,6 +13,7 @@
                  [compojure "1.1.3"]
                  [hiccup "1.0.2"]
                  [valip "0.2.0"]
-                 [ring-anti-forgery "0.2.1"]]
+                 [ring-anti-forgery "0.2.1"]
+                 [org.openid4java/openid4java-consumer "0.9.5"]]
   :plugins [[environ/environ.lein "0.3.0"]]
   :hooks [environ.leiningen.hooks])

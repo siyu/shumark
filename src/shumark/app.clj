@@ -13,7 +13,7 @@
             [compojure.response :as response]
             [clojure.data.json :as json]
             [clojure.string :as str]
-            [shumark.model.bookmark :as model]
+            [shumark.model [bookmark :as model] [user :as user]]
             [shumark.openid :as openid]))
 
 (defn- js []
@@ -123,7 +123,7 @@ function delBmModalForm(formId,url,msgId) {
 (defhtml del-bm-modals [bms]
   (map del-bm-modal bms))
 
-(defn- home-page []
+(defn layout [& {nav :nav content :content}]
   (html5 {:lang :en}
          [:head
           [:meta {:charset :utf-8}]
@@ -138,14 +138,29 @@ function delBmModalForm(formId,url,msgId) {
              [:a.btn.btn-navbar {:data-toggle :collapse :data-target :.nav-collapse}
               (repeat 3 [:span.icon-bar])]
              (link-to {:class :brand} "/" "Shumark")
-             [:div.nav-collapse.collapse
-              [:ul.nav
-               [:li (link-to {:data-toggle :modal} "#add-bm-modal" "Add Bookmark")]]]]]]
+             nav]]]
           [:div.container-fluid
+           content
+           [:hr]
+           [:footer [:p "© Si Yu 2012"]]]          
+          (include-js "/js/jquery.js" "/js/bootstrap.js")]))
+
+(defn user [req]
+  (get-in req [:session :user]))
+
+(defn bookmark-page [req]
+  (layout :nav
+          [:div.nav-collapse.collapse
+           [:ul.nav
+            [:li (link-to {:data-toggle :modal} "#add-bm-modal" "Add Bookmark")]
+            [:li (link-to "/bookmark" (-> req user :email))]
+            [:li (link-to "/logout" "Logout")]]]
+          :content
+          (html
            [:div.row-fluid
             [:div.span2]
             [:div.span8
-             (let [bms (model/select)]
+             (let [bms (model/select (-> req user :user_id))]
                (html
                 [:div.well
                  [:table
@@ -158,10 +173,14 @@ function delBmModalForm(formId,url,msgId) {
                        (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
                 (del-bm-modals bms)))]
             [:div.span2]]
-           (add-bm-modal)
-           [:hr]
-           [:footer [:p "© Si Yu 2012"]]]          
-          (include-js "/js/jquery.js" "/js/bootstrap.js")]))
+           (add-bm-modal))))
+
+(defn home-page []
+  (layout :content          
+          [:div.hero-unit {:style "text-align:center;"}
+           [:h1 "Shumark!"]
+           [:p "Your ultimate bookmark web app."]
+           [:p (link-to {:class "btn btn-primary btn-large"} "/login" "Login with Google Account")]]))
 
 (defn- json-resp [x]
   (-> x json/write-str response (content-type "application/json")))
@@ -169,21 +188,35 @@ function delBmModalForm(formId,url,msgId) {
 (defn- login-success-handler
   "If it is a new user create an account and redirect to bookmark page,
    else redirect to bookmark page"
-  [req])
+  [req]
+  (let [user (user/insert-if-not-exist (get-in req [:session :auth-map :email]))]
+    (assoc (redirect "/bookmark")
+      :session (assoc (:session req) :user user))))
 
 (defn- login-failure-handler [req]
   (redirect "/"))
 
+(defn- auth? [req]
+  (get-in req [:session :auth-map]))
+
+(defn wrap-auth [handler]
+  (fn [req]
+    (if (and (= (:uri req) "/bookmark") (not (auth? req)))
+      (redirect "/")
+      (handler req))))
+
 (defroutes routes
-  (GET "/" [] (home-page))
+  (GET "/" [:as req] (if (auth? req) (bookmark-page req) (home-page)))
+  (GET "/bookmark" [:as req] (bookmark-page req))
   (GET "/login" [:as req] (openid/redirect->openid req "/openid-return"))
+  (GET "/logout" [:as req] (assoc (redirect "/") :session nil))
   (GET "/openid-return" [:as req] (openid/verify req login-success-handler login-failure-handler))
-  (POST "/add" [name url :as {params :params}]
+  (POST "/add" [name url :as {params :params :as req}]
         (if-let [errors (validate params
                                   [:url (complement str/blank?) "URL can't be blank."])]
           (json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
           (do
-            (model/insert {:user_id 1 :name name :url url})
+            (model/insert {:user_id (-> req user :user_id) :name name :url url})
             (json-resp {}))))
   (POST "/delete" [bookmark-id]
         (try (do
@@ -195,5 +228,6 @@ function delBmModalForm(formId,url,msgId) {
 
 
 (def app (-> routes
+             wrap-auth
              wrap-anti-forgery
              handler/site))

@@ -2,10 +2,11 @@
   (:require [clojure.java.jdbc :as jdbc]
             [shumark.model.db :as db]))
 
-(defn select []
+(defn select [user-id]
   (prn "db-url:" db/db-url)
   (jdbc/with-connection db/db-url
-    (jdbc/with-query-results res ["select * from bookmark"] (vec res))))
+    (jdbc/with-query-results res ["select * from bookmark where user_id = ?" user-id]
+      (vec res))))
 
 (defn insert [m]
   (jdbc/with-connection db/db-url
