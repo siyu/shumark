@@ -79,7 +79,9 @@ function delBmModalForm(formId,url,msgId) {
 
 (defhtml add-bm-modal []
   (html
-   (form-to {:id :addBmModalForm :class :form-horizontal :onsubmit "addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"} [:post "#"]
+   (form-to {:id :addBmModalForm :class :form-horizontal
+             :onsubmit "$('input[type=\"submit\"]').attr('disabled','disabled');addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"}
+            [:post "#"]
             (anti-forgery-field)
             [:div.modal.hide.fade {:id :add-bm-modal :tabindex -1 :role :dialog :aria-labelledby :add-bm-modal-label :aria-hidden :true}
             [:div.modal-header
@@ -88,7 +90,7 @@ function delBmModalForm(formId,url,msgId) {
             [:div#addBmModalBody.modal-body (add-bm-modal-body-form)]
             [:div.modal-footer
              (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
-             (submit-button {:class "btn btn-primary"} "Add Bookmark")]])))
+             (submit-button {:id :add-bm-submit :class "btn btn-primary"} "Add Bookmark")]])))
 
 (defn- del-bm-modal-id [bm]
   (str "del-bm-modal-" (:bookmark_id bm)))
@@ -185,6 +187,20 @@ function delBmModalForm(formId,url,msgId) {
 (defn- json-resp [x]
   (-> x json/write-str response (content-type "application/json")))
 
+(defn- delete-bookmark [bookmark-id]
+  (try
+    (do
+      (model/delete (Long. bookmark-id))
+      (json-resp {}))
+    (catch Exception e (json-resp {:errors (str e)}))))
+
+(defn- add-bookmark [{params :params :as req}]
+  (if-let [errors (validate params [:url (complement str/blank?) "URL can't be blank."])]
+    (json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
+    (do
+      (model/insert (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url])))
+      (json-resp {}))))
+
 (defn- login-success-handler
   "If it is a new user create an account and redirect to bookmark page,
    else redirect to bookmark page"
@@ -212,18 +228,8 @@ function delBmModalForm(formId,url,msgId) {
   (GET "/login" [:as req] (openid/redirect->openid req "/openid-return"))
   (GET "/logout" [:as req] (assoc (redirect "/") :session nil))
   (GET "/openid-return" [:as req] (openid/verify req login-success-handler login-failure-handler))
-  (POST "/add" [name url :as {params :params :as req}]
-        (if-let [errors (validate params
-                                  [:url (complement str/blank?) "URL can't be blank."])]
-          (json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
-          (do
-            (model/insert {:user_id (-> req user :user_id) :name name :url url})
-            (json-resp {}))))
-  (POST "/delete" [bookmark-id]
-        (try (do
-               (model/delete (Long. bookmark-id))
-               (json-resp {}))
-             (catch Exception e (json-resp {:errors (str e)}))))        
+  (POST "/add" [:as req] (add-bookmark req))
+  (POST "/delete" [bookmark-id] (delete-bookmark bookmark-id))
   (route/resources "/")
   (route/not-found "Page not found"))
 

@@ -5,7 +5,8 @@
 (defn select [user-id]
   (prn "db-url:" db/db-url)
   (jdbc/with-connection db/db-url
-    (jdbc/with-query-results res ["select * from bookmark where user_id = ?" user-id]
+    (jdbc/with-query-results res
+      ["select * from bookmark where user_id = ? order by created desc" user-id]
       (vec res))))
 
 (defn insert [m]
@@ -14,7 +15,7 @@
                                   ["url=?" (:url m)]
                                   m)))
 
-(defn update [m] (insert m))
+(def update insert)
 
 (defn delete [bookmark-id]
   (jdbc/with-connection db/db-url
