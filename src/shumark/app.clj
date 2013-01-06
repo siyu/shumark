@@ -195,7 +195,9 @@ function delBmModalForm(formId,url,msgId) {
   (if-let [errors (validate params [:url (complement str/blank?) "URL can't be blank."])]
     (http/json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
     (do
-      (let [m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url]))
+      (let [_ (println "add-bookmark:")
+            _ (println "user=" (user req))
+            m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url]))
             m (update-in m [:url] http/transform-url)]
         (model/insert m)
         (http/json-resp {})))))
