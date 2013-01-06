@@ -196,7 +196,7 @@ function delBmModalForm(formId,url,msgId) {
     (http/json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
     (do
       (let [m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url]))
-            ]
+            m (update-in m [:url] http/transform-url)]
         (model/insert m)
         (http/json-resp {})))))
 
