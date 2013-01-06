@@ -18,7 +18,7 @@
     (jdbc/transaction
      (if-let [user (select-by-email email)]
        user
-       (insert email)))))
+       (first (insert email))))))
 
 
 
