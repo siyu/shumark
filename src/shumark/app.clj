@@ -11,10 +11,10 @@
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [compojure.response :as response]
-            [clojure.data.json :as json]
             [clojure.string :as str]
             [shumark.model [bookmark :as model] [user :as user]]
-            [shumark.openid :as openid]))
+            [shumark.openid :as openid]
+            [shumark.util.http :as http]))
 
 (defn- js []
   "
@@ -184,22 +184,21 @@ function delBmModalForm(formId,url,msgId) {
            [:p "Your ultimate bookmark web app."]
            [:p (link-to {:class "btn btn-primary btn-large"} "/login" "Login with Google Account")]]))
 
-(defn- json-resp [x]
-  (-> x json/write-str response (content-type "application/json")))
-
 (defn- delete-bookmark [bookmark-id]
   (try
     (do
       (model/delete (Long. bookmark-id))
-      (json-resp {}))
-    (catch Exception e (json-resp {:errors (str e)}))))
+      (http/json-resp {}))
+    (catch Exception e (http/json-resp {:errors (str e)}))))
 
 (defn- add-bookmark [{params :params :as req}]
   (if-let [errors (validate params [:url (complement str/blank?) "URL can't be blank."])]
-    (json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
+    (http/json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
     (do
-      (model/insert (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url])))
-      (json-resp {}))))
+      (let [m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url]))
+            ]
+        (model/insert m)
+        (http/json-resp {})))))
 
 (defn- login-success-handler
   "If it is a new user create an account and redirect to bookmark page,
