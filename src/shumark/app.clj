@@ -18,6 +18,11 @@
 
 (defn- js []
   "
+$(function() { // on document ready
+  $('#add-bm-modal').on('shown', function () { $('#name').focus(); });
+});
+
+
 function addBmModalForm(formName,url,msgName,modalBodyName) {
   var form_data = $('#'+formName).serialize();
   $.ajax({
@@ -132,6 +137,7 @@ function delBmModalForm(formId,url,msgId) {
           [:title "Shumark"]
           [:meta {:name :viewport :content "width=device-width, initial-scale=1.0"}]
           (include-css "/css/bootstrap.css" "/css/bootstrap-responsive.css")
+          (include-js "/js/jquery.js")
           [:script {:type "text/javascript"} (js)]]
          [:body 
           [:div.navbar.navbar-inverse.navbar-static-top
@@ -145,7 +151,7 @@ function delBmModalForm(formId,url,msgId) {
            content
            [:hr]
            [:footer [:p "© Si Yu 2012"]]]          
-          (include-js "/js/jquery.js" "/js/bootstrap.js")]))
+          (include-js "/js/bootstrap.js")]))
 
 (defn user [req]
   (get-in req [:session :user]))
