@@ -4,7 +4,7 @@
         [hiccup [core :only [html]] [def :only [defhtml]]
          [page :only [html5 include-css include-js]]
          [element :only [link-to]]
-         [form :only [form-to label hidden-field text-field reset-button submit-button]]]
+         [form :only [form-to label hidden-field text-area text-field reset-button submit-button]]]
         [valip.core :only [validate]]
         [ring.util.anti-forgery]
         [ring.middleware.anti-forgery])
@@ -77,15 +77,18 @@ function delBmModalForm(formId,url,msgId) {
 (defhtml add-bm-modal-body-form [& [params errors]]
   (html
    [:div#addBmModalMsg]
-   (for [[k l] [[:name "Name"] [:url "URL"]]]
+   (for [[k l] [[:name "Name"] [:url "URL"] [:tags "Tags"]]]
      [(if (empty? (k errors)) :div.control-group :div.control-group.error)
       (label {:class :control-label} k l)
-      [:div.controls (text-field k (k params)) (control-error (k errors))]])))
+      [:div.controls (text-field k (k params)) (control-error (k errors))]])
+   [(if (empty? (:notes errors)) :div.control-group :div.control-group.error)
+      (label {:class :control-label} :notes "Notes")
+      [:div.controls (text-area :notes (:notes params)) (control-error (:notes errors))]]))
 
 (defhtml add-bm-modal []
   (html
    (form-to {:id :addBmModalForm :class :form-horizontal
-             :onsubmit "$('input[type=\"submit\"]').attr('disabled','disabled');addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"}
+             :onsubmit "addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"}
             [:post "#"]
             (anti-forgery-field)
             [:div.modal.hide.fade {:id :add-bm-modal :tabindex -1 :role :dialog :aria-labelledby :add-bm-modal-label :aria-hidden :true}
@@ -198,14 +201,16 @@ function delBmModalForm(formId,url,msgId) {
     (catch Exception e (http/json-resp {:errors (str e)}))))
 
 (defn- add-bookmark [{params :params :as req}]
-  (if-let [errors (validate params [:url (complement str/blank?) "URL can't be blank."])]
+  (if-let [errors (validate params [:url (complement str/blank?) "URL can't be blank."]
+                            [:tags #(< (count %) 30) "Tags can't be longer than 30 characters."]
+                            [:notes #(< (count %) 100) "Notes can't be longer than 100 characters."])]
     (http/json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
     (do
       (let [_ (println "add-bookmark:")
             _ (println "user=" (user req))
-            m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url]))
+            m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url :tags :notes]))
             m (update-in m [:url] http/transform-url)]
-        (model/insert m)
+        (model/insert-bookmark m)
         (http/json-resp {})))))
 
 (defn- login-success-handler

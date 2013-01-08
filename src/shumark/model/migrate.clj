@@ -19,7 +19,12 @@ create table if not exists bookmark (
   tags text,
   notes text,
   created timestamp not null default now(),
-  modified timestamp not null default now())")))
+  modified timestamp not null default now());" "
+create table if not exists bookmark_tag (
+  tag_id serial primary key,
+  bookmark_id integer,
+  tag text not null,
+  created timestamp not null default now())")))
 
 
 (defn -main []
