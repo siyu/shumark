@@ -101,14 +101,14 @@ function delBmModalForm(formId,url,msgId) {
              (submit-button {:id :add-bm-submit :class "btn btn-primary"} "Add Bookmark")]])))
 
 (defn- del-bm-modal-id [bm]
-  (str "del-bm-modal-" (:bookmark_id bm)))
+  (str "del-bm-modal-" (:bookmark-id bm)))
 
 (defn- edit-del-span-id [bm]
   "id used to remove the edit and delete span after delete."
-  (str "edit-del-span-" (:bookmark_id bm)))
+  (str "edit-del-span-" (:bookmark-id bm)))
 
 (defhtml del-bm-modal [bm]
-  (let [bm-id (:bookmark_id bm)
+  (let [bm-id (:bookmark-id bm)
         form-id (str "del-bm-modal-form-" bm-id)
         msg-id (str "msg-id-" bm-id)
         modal-id (del-bm-modal-id bm)
@@ -171,7 +171,7 @@ function delBmModalForm(formId,url,msgId) {
            [:div.row-fluid
             [:div.span2]
             [:div.span8
-             (let [bms (model/select (-> req user :user_id))]
+             (let [bms (model/select (-> req user :user-id))]
                (html
                 [:div.well
                  [:table
@@ -208,7 +208,7 @@ function delBmModalForm(formId,url,msgId) {
     (do
       (let [_ (println "add-bookmark:")
             _ (println "user=" (user req))
-            m (merge (select-keys (user req) [:user_id]) (select-keys params [:name :url :tags :notes]))
+            m (merge (select-keys (user req) [:user-id]) (select-keys params [:name :url :tags :notes]))
             m (update-in m [:url] http/transform-url)]
         (model/insert-bookmark m)
         (http/json-resp {})))))

@@ -7,6 +7,7 @@
     (jdbc/do-commands "
 drop table if exists bookmark_user;" "
 drop table if exists bookmark;" "
+drop table if exists bookmark_tag;" "
 create table if not exists bookmark_user (
   user_id serial primary key,
   email text not null unique,
