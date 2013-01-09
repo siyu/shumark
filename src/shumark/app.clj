@@ -23,7 +23,7 @@ $(function() { // on document ready
 });
 
 
-function addBmModalForm(formName,url,msgName,modalBodyName) {
+function saveBookmarkModalAjax(formName,url,msgName,modalBodyName) {
   var form_data = $('#'+formName).serialize();
   $.ajax({
     type: 'Post',
@@ -74,31 +74,37 @@ function delBmModalForm(formId,url,msgId) {
   [errors]
   (when-not (empty? errors) [:span.help-inline (str/join \space errors)]))
 
-(defhtml add-bm-modal-body-form [& [params errors]]
-  (html
-   [:div#addBmModalMsg]
-   (for [[k l] [[:name "Name"] [:url "URL"] [:tags "Tags"]]]
-     [(if (empty? (k errors)) :div.control-group :div.control-group.error)
-      (label {:class :control-label} k l)
-      [:div.controls (text-field k (k params)) (control-error (k errors))]])
-   [(if (empty? (:notes errors)) :div.control-group :div.control-group.error)
-      (label {:class :control-label} :notes "Notes")
-      [:div.controls (text-area :notes (:notes params)) (control-error (:notes errors))]]))
+(defhtml save-bm-modal-body [modal-msg-id & [params errors]]
+  [:div {:id modal-msg-id}]
+  (for [[k l] [[:name "Name"] [:url "URL"] [:tags "Tags"]]]
+    [(if (empty? (k errors)) :div.control-group :div.control-group.error)
+     (label {:class :control-label} k l)
+     [:div.controls (text-field k (k params)) (control-error (k errors))]])
+  [(if (empty? (:notes errors)) :div.control-group :div.control-group.error)
+   (label {:class :control-label} :notes "Notes")
+   [:div.controls (text-area :notes (:notes params)) (control-error (:notes errors))]])
 
-(defhtml add-bm-modal []
-  (html
-   (form-to {:id :addBmModalForm :class :form-horizontal
-             :onsubmit "addBmModalForm('addBmModalForm','/add','addBmModalMsg','addBmModalBody');return false;"}
-            [:post "#"]
-            (anti-forgery-field)
-            [:div.modal.hide.fade {:id :add-bm-modal :tabindex -1 :role :dialog :aria-labelledby :add-bm-modal-label :aria-hidden :true}
-            [:div.modal-header
-             [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
-             [:h3#add-bm-modal-label "Add a Bookmark"]]
-            [:div#addBmModalBody.modal-body (add-bm-modal-body-form)]
-            [:div.modal-footer
-             (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
-             (submit-button {:id :add-bm-submit :class "btn btn-primary"} "Add Bookmark")]])))
+(defn- gen-modal-id [id] (str id "-modal"))
+
+(defhtml save-bm-modal [id modal-label]
+  (let [form-id (str id "-form")
+        modal-id (gen-modal-id id)
+        modal-body-id (str id "-modal-body")
+        modal-label-id (str id "-modal-label")
+        modal-msg-id (str id "-modal-msg")]
+    (form-to {:id form-id :class :form-horizontal
+               :onsubmit (str "saveBookmarkModalAjax('" form-id "','/add','" modal-msg-id "','" modal-body-id "');return false;")}
+              [:post "#"]
+              (anti-forgery-field)
+              (hidden-field :modal-msg-id modal-msg-id)
+              [:div.modal.hide.fade {:id modal-id :tabindex -1 :role :dialog :aria-labelledby modal-label-id :aria-hidden :true}
+               [:div.modal-header
+                [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
+                [:h3 {:id modal-label-id} modal-label]]
+               [:div.modal-body {:id modal-body-id} (save-bm-modal-body modal-msg-id)]
+               [:div.modal-footer
+                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
+                (submit-button {:class "btn btn-primary"} "Save Bookmark")]])))
 
 (defn- del-bm-modal-id [bm]
   (str "del-bm-modal-" (:bookmark-id bm)))
@@ -153,38 +159,40 @@ function delBmModalForm(formId,url,msgId) {
           [:div.container-fluid
            content
            [:hr]
-           [:footer [:p "© Si Yu 2012"]]]          
+           [:footer [:p "Copyright © Si Yu 2013"]]]          
           (include-js "/js/bootstrap.js")]))
 
 (defn user [req]
   (get-in req [:session :user]))
 
 (defn bookmark-page [req]
-  (layout :nav
-          [:div.nav-collapse.collapse
-           [:ul.nav
-            [:li (link-to {:data-toggle :modal} "#add-bm-modal" "Add Bookmark")]
-            [:li (link-to "/bookmark" (-> req user :email))]
-            [:li (link-to "/logout" "Logout")]]]
-          :content
-          (html
-           [:div.row-fluid
-            [:div.span2]
-            [:div.span8
-             (let [bms (model/select (-> req user :user-id))]
-               (html
-                [:div.well
-                 [:table
-                  (for [bm bms]
-                    [:tr [:td {:style "padding-right:0.5em"} [:i.icon-star-empty]]
-                     [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
-                      [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
-                      [:span (:url bm)]
-                      [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;"
-                       (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
-                (del-bm-modals bms)))]
-            [:div.span2]]
-           (add-bm-modal))))
+  (let [add-bm-modal-id-prefix "add-boomkark"
+        add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)]
+    (layout :nav
+            [:div.nav-collapse.collapse
+             [:ul.nav
+              [:li (link-to {:data-toggle :modal} (str "#" add-bm-modal-id) "Add Bookmark")]
+              [:li (link-to "/bookmark" (-> req user :email))]
+              [:li (link-to "/logout" "Logout")]]]
+            :content
+            (html
+             [:div.row-fluid
+              [:div.span2]
+              [:div.span8
+               (let [bms (model/select (-> req user :user-id))]
+                 (html
+                  [:div.well
+                   [:table
+                    (for [bm bms]
+                      [:tr [:td {:style "padding-right:0.5em"} [:i.icon-star-empty]]
+                       [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
+                        [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
+                        [:span (:url bm)]
+                        [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;"
+                         (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
+                  (del-bm-modals bms)))]
+              [:div.span2]]
+             (save-bm-modal add-bm-modal-id-prefix "Add a Bookmark!!!")))))
 
 (defn home-page []
   (layout :content          
@@ -198,13 +206,13 @@ function delBmModalForm(formId,url,msgId) {
     (do
       (model/delete (Long. bookmark-id))
       (http/json-resp {}))
-    (catch Exception e (http/json-resp {:errors (str e)}))))
+    (catch Exception e (.printStackTrace e) (http/json-resp {:errors (str e)}))))
 
 (defn- add-bookmark [{params :params :as req}]
   (if-let [errors (validate params [:url (complement str/blank?) "URL can't be blank."]
                             [:tags #(< (count %) 30) "Tags can't be longer than 30 characters."]
                             [:notes #(< (count %) 100) "Notes can't be longer than 100 characters."])]
-    (http/json-resp {:errors errors :html (add-bm-modal-body-form params errors)})
+    (http/json-resp {:errors errors :html (save-bm-modal-body (:modal-msg-id params) params errors)})
     (do
       (let [_ (println "add-bookmark:")
             _ (println "user=" (user req))
