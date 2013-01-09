@@ -69,6 +69,29 @@ function delBmModalForm(formId,url,msgId) {
 }
 ")
 
+(defn layout [& {nav :nav content :content}]
+  (html5 {:lang :en}
+         [:head
+          [:meta {:charset :utf-8}]
+          [:title "Shumark"]
+          [:meta {:name :viewport :content "width=device-width, initial-scale=1.0"}]
+          (include-css "/css/bootstrap.css" "/css/bootstrap-responsive.css")
+          (include-js "/js/jquery.js")
+          [:script {:type "text/javascript"} (js)]]
+         [:body 
+          [:div.navbar.navbar-inverse.navbar-static-top
+           [:div.navbar-inner
+            [:div.container-fluid
+             [:a.btn.btn-navbar {:data-toggle :collapse :data-target :.nav-collapse}
+              (repeat 3 [:span.icon-bar])]
+             (link-to {:class :brand} "/" "Shumark")
+             nav]]]
+          [:div.container-fluid
+           content
+           [:hr]
+           [:footer [:p "Copyright © Si Yu 2013"]]]          
+          (include-js "/js/bootstrap.js")]))
+
 (defn control-error
   "Take coll of errors and join them together in inline help. (from Remix)"
   [errors]
@@ -86,7 +109,7 @@ function delBmModalForm(formId,url,msgId) {
 
 (defn- gen-modal-id [id] (str id "-modal"))
 
-(defhtml save-bm-modal [id modal-label]
+(defhtml save-bm-modal [id modal-label & [params]]
   (let [form-id (str id "-form")
         modal-id (gen-modal-id id)
         modal-body-id (str id "-modal-body")
@@ -101,7 +124,7 @@ function delBmModalForm(formId,url,msgId) {
                [:div.modal-header
                 [:button {:type :button :class :close :data-dismiss :modal :aria-hidden :true} "x"]
                 [:h3 {:id modal-label-id} modal-label]]
-               [:div.modal-body {:id modal-body-id} (save-bm-modal-body modal-msg-id)]
+               [:div.modal-body {:id modal-body-id} (save-bm-modal-body modal-msg-id params)]
                [:div.modal-footer
                 (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                 (submit-button {:class "btn btn-primary"} "Save Bookmark")]])))
@@ -136,32 +159,6 @@ function delBmModalForm(formId,url,msgId) {
                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                (submit-button {:class "btn btn-primary"} "Delete")]])))
 
-(defhtml del-bm-modals [bms]
-  (map del-bm-modal bms))
-
-(defn layout [& {nav :nav content :content}]
-  (html5 {:lang :en}
-         [:head
-          [:meta {:charset :utf-8}]
-          [:title "Shumark"]
-          [:meta {:name :viewport :content "width=device-width, initial-scale=1.0"}]
-          (include-css "/css/bootstrap.css" "/css/bootstrap-responsive.css")
-          (include-js "/js/jquery.js")
-          [:script {:type "text/javascript"} (js)]]
-         [:body 
-          [:div.navbar.navbar-inverse.navbar-static-top
-           [:div.navbar-inner
-            [:div.container-fluid
-             [:a.btn.btn-navbar {:data-toggle :collapse :data-target :.nav-collapse}
-              (repeat 3 [:span.icon-bar])]
-             (link-to {:class :brand} "/" "Shumark")
-             nav]]]
-          [:div.container-fluid
-           content
-           [:hr]
-           [:footer [:p "Copyright © Si Yu 2013"]]]          
-          (include-js "/js/bootstrap.js")]))
-
 (defn user [req]
   (get-in req [:session :user]))
 
@@ -179,7 +176,8 @@ function delBmModalForm(formId,url,msgId) {
              [:div.row-fluid
               [:div.span2]
               [:div.span8
-               (let [bms (model/select (-> req user :user-id))]
+               (let [bms (model/select (-> req user :user-id))
+                     edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
                  (html
                   [:div.well
                    [:table
@@ -188,11 +186,14 @@ function delBmModalForm(formId,url,msgId) {
                        [:td {:nowrap :nowrap :width "100%"} (link-to (:url bm) (:name bm))
                         [:span "&nbsp;&nbsp;-&nbsp;&nbsp;"]
                         [:span (:url bm)]
-                        [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;" [:i.icon-edit] "&nbsp;&nbsp;"
+                        [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;"
+                         (link-to {:data-toggle :modal} (str "#" (gen-modal-id (edit-bm-modal-prefix-fn (:bookmark-id bm)))) [:i.icon-edit])
+                         "&nbsp;&nbsp;"
                          (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
-                  (del-bm-modals bms)))]
+                  (map del-bm-modal bms)
+                  (map #(save-bm-modal (edit-bm-modal-prefix-fn (:bookmark-id %)) "Edit" %) bms)))]
               [:div.span2]]
-             (save-bm-modal add-bm-modal-id-prefix "Add a Bookmark!!!")))))
+             (save-bm-modal add-bm-modal-id-prefix "Add a Bookmark")))))
 
 (defn home-page []
   (layout :content          
