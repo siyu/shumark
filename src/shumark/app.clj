@@ -3,6 +3,7 @@
         [compojure [core :only [defroutes GET POST ANY]]]
         [hiccup [core :only [html]] [def :only [defhtml]]
          [page :only [html5 include-css include-js]]
+         [util :only [url]]
          [element :only [link-to]]
          [form :only [form-to label hidden-field text-area text-field reset-button submit-button]]]
         [valip.core :only [validate]]
@@ -14,14 +15,14 @@
             [clojure.string :as str]
             [shumark.model [bookmark :as model] [user :as user]]
             [shumark.openid :as openid]
-            [shumark.util.http :as http]))
+            [shumark.util.http :as http]
+            [shumark.auth :as auth]))
 
 (defn- js []
   "
 $(function() { // on document ready
   $('#add-bm-modal').on('shown', function () { $('#name').focus(); });
 });
-
 
 function saveBookmarkModalAjax(formName,url,msgName,modalBodyName) {
   var form_data = $('#'+formName).serialize();
@@ -99,6 +100,7 @@ function delBmModalForm(formId,url,msgId) {
 
 (defhtml save-bm-modal-body [modal-msg-id & [params errors]]
   [:div {:id modal-msg-id}]
+  (when-let [bookmark-id (:bookmark-id params)] (hidden-field :bookmark-id bookmark-id))
   (for [[k l] [[:name "Name"] [:url "URL"] [:tags "Tags"]]]
     [(if (empty? (k errors)) :div.control-group :div.control-group.error)
      (label {:class :control-label} k l)
@@ -159,9 +161,6 @@ function delBmModalForm(formId,url,msgId) {
                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                (submit-button {:class "btn btn-primary"} "Delete")]])))
 
-(defn user [req]
-  (get-in req [:session :user]))
-
 (defn bookmark-page [req]
   (let [add-bm-modal-id-prefix "add-boomkark"
         add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)]
@@ -169,14 +168,18 @@ function delBmModalForm(formId,url,msgId) {
             [:div.nav-collapse.collapse
              [:ul.nav
               [:li (link-to {:data-toggle :modal} (str "#" add-bm-modal-id) "Add Bookmark")]
-              [:li (link-to "/bookmark" (-> req user :email))]
+              [:li (link-to "/bookmark" (-> req auth/user :email))]
               [:li (link-to "/logout" "Logout")]]]
             :content
             (html
              [:div.row-fluid
-              [:div.span2]
+              [:div.span2
+               [:ul.nav.nav-list
+                [:li.nav-header "Tags"]
+                (for [[tag count] (model/select-tags (-> req auth/user :user-id))]
+                  [:li (link-to (url "/bookmark" {:tag tag}) (str tag " (" count ")"))])]]
               [:div.span8
-               (let [bms (model/select (-> req user :user-id))
+               (let [bms (model/select (-> req auth/user :user-id))
                      edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
                  (html
                   [:div.well
@@ -205,7 +208,7 @@ function delBmModalForm(formId,url,msgId) {
 (defn- delete-bookmark [bookmark-id]
   (try
     (do
-      (model/delete (Long. bookmark-id))
+      (model/delete (Integer. bookmark-id))
       (http/json-resp {}))
     (catch Exception e (.printStackTrace e) (http/json-resp {:errors (str e)}))))
 
@@ -215,47 +218,23 @@ function delBmModalForm(formId,url,msgId) {
                             [:notes #(< (count %) 100) "Notes can't be longer than 100 characters."])]
     (http/json-resp {:errors errors :html (save-bm-modal-body (:modal-msg-id params) params errors)})
     (do
-      (let [_ (println "add-bookmark:")
-            _ (println "user=" (user req))
-            m (merge (select-keys (user req) [:user-id]) (select-keys params [:name :url :tags :notes]))
+      (let [m (merge (select-keys (auth/user req) [:user-id]) (select-keys params [:bookmark-id :name :url :tags :notes]))
             m (update-in m [:url] http/transform-url)]
         (model/insert-bookmark m)
         (http/json-resp {})))))
 
-(defn- login-success-handler
-  "If it is a new user create an account and redirect to bookmark page,
-   else redirect to bookmark page"
-  [req]
-  (let [user (user/insert-if-not-exist (get-in req [:session :auth-map :email]))
-        _ (println "login-success-handler: user=" user)]
-    (assoc (redirect "/bookmark")
-      :session (assoc (:session req) :user user))))
-
-(defn- login-failure-handler [req]
-  (redirect "/"))
-
-(defn- auth? [req]
-  (get-in req [:session :auth-map]))
-
-(defn wrap-auth [handler]
-  (fn [req]
-    (if (and (= (:uri req) "/bookmark") (not (auth? req)))
-      (redirect "/")
-      (handler req))))
-
 (defroutes routes
-  (GET "/" [:as req] (if (auth? req) (bookmark-page req) (home-page)))
+  (GET "/" [:as req] (if (auth/auth? req) (bookmark-page req) (home-page)))
   (GET "/bookmark" [:as req] (bookmark-page req))
   (GET "/login" [:as req] (openid/redirect->openid req "/openid-return"))
   (GET "/logout" [:as req] (assoc (redirect "/") :session nil))
-  (GET "/openid-return" [:as req] (openid/verify req login-success-handler login-failure-handler))
+  (GET "/openid-return" [:as req] (openid/verify req auth/login-success-handler auth/login-failure-handler))
   (POST "/add" [:as req] (add-bookmark req))
   (POST "/delete" [bookmark-id] (delete-bookmark bookmark-id))
   (route/resources "/")
   (route/not-found "Page not found"))
 
-
 (def app (-> routes
-             wrap-auth
+             auth/wrap-auth
              wrap-anti-forgery
              handler/site))
