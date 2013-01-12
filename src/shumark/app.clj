@@ -168,7 +168,7 @@ function delBmModalForm(formId,url,msgId) {
                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                (submit-button {:class "btn btn-primary"} "Delete")]])))
 
-(defn bookmark-page [req]
+(defn bookmark-page [{params :params :as req}]
   (let [add-bm-modal-id-prefix "add-boomkark"
         add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)]
     (layout :nav
@@ -188,7 +188,10 @@ function delBmModalForm(formId,url,msgId) {
                  (for [[tag count] (model/select-tags (-> req auth/user :user-id))]
                    [:li (link-to (url "/bookmark" {:tag tag}) (str tag " (" count ")"))])]]]
               [:div.span8
-               (let [bms (model/select (-> req auth/user :user-id))
+               (let [_ (println "bookmark-page params=" params)
+                     bms (if-let [tag (:tag params)]
+                           (model/select-by-tag (-> req auth/user :user-id) tag)
+                           (model/select (-> req auth/user :user-id)))
                      edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
                  (html
                   [:div.well
