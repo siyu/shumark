@@ -77,20 +77,27 @@ function delBmModalForm(formId,url,msgId) {
           [:title "Shumark"]
           [:meta {:name :viewport :content "width=device-width, initial-scale=1.0"}]
           (include-css "/css/bootstrap.css" "/css/bootstrap-responsive.css")
+          [:style "
+     body { padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+          }	  
+	.sidebar-nav {
+        padding: 9px 0;
+      }	"]
           (include-js "/js/jquery.js")
           [:script {:type "text/javascript"} (js)]]
          [:body 
-          [:div.navbar.navbar-inverse.navbar-static-top
+          [:div.navbar.navbar-inverse.navbar-fixed-top
            [:div.navbar-inner
-            [:div.container-fluid
+            [:div.container
              [:a.btn.btn-navbar {:data-toggle :collapse :data-target :.nav-collapse}
               (repeat 3 [:span.icon-bar])]
              (link-to {:class :brand} "/" "Shumark")
              nav]]]
-          [:div.container-fluid
-           content
-           [:hr]
-           [:footer [:p "Copyright © Si Yu 2013"]]]          
+          [:div.container
+           [:div.container-fluid
+            content
+            [:hr]
+            [:footer [:p "Copyright © Si Yu 2013"]]]]          
           (include-js "/js/bootstrap.js")]))
 
 (defn control-error
@@ -174,10 +181,12 @@ function delBmModalForm(formId,url,msgId) {
             (html
              [:div.row-fluid
               [:div.span2
-               [:ul.nav.nav-list
-                [:li.nav-header "Tags"]
-                (for [[tag count] (model/select-tags (-> req auth/user :user-id))]
-                  [:li (link-to (url "/bookmark" {:tag tag}) (str tag " (" count ")"))])]]
+               [:div.sidebar-nav.well
+                [:ul.nav.nav-list
+                 [:li.nav-header "Tags"]
+                 [:li (link-to "/bookmark" "All")]
+                 (for [[tag count] (model/select-tags (-> req auth/user :user-id))]
+                   [:li (link-to (url "/bookmark" {:tag tag}) (str tag " (" count ")"))])]]]
               [:div.span8
                (let [bms (model/select (-> req auth/user :user-id))
                      edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
