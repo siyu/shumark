@@ -14,7 +14,8 @@
     (jdbc/with-query-results res
       ["select b.bookmark_id, b.user_id, b.name, b.url, b.notes, bt.tag
         from bookmark b left outer join bookmark_tag bt on (b.bookmark_id = bt.bookmark_id)
-        where b.user_id = ? order by b.created desc" user-id]
+        where b.user_id = ?
+        order by b.created desc limit ?" user-id 2]
       (bookmark-mapper res))))
 
 (defn select-by-tag [user-id tag]

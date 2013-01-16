@@ -13,9 +13,11 @@
             [compojure.handler :as handler]
             [compojure.response :as response]
             [clojure.string :as str]
+            [shumark.view.common :as cmn]
             [shumark.model [bookmark :as model] [user :as user]]
             [shumark.openid :as openid]
             [shumark.util.http :as http]
+            [shumark.util.err :as err]
             [shumark.auth :as auth]))
 
 (defn- js []
@@ -100,21 +102,16 @@ function delBmModalForm(formId,url,msgId) {
             [:footer [:p "Copyright © Si Yu 2013"]]]]          
           (include-js "/js/bootstrap.js")]))
 
-(defn control-error
-  "Take coll of errors and join them together in inline help. (from Remix)"
-  [errors]
-  (when-not (empty? errors) [:span.help-inline (str/join \space errors)]))
-
 (defhtml save-bm-modal-body [modal-msg-id & [params errors]]
   [:div {:id modal-msg-id}]
   (when-let [bookmark-id (:bookmark-id params)] (hidden-field :bookmark-id bookmark-id))
   (for [[k l] [[:name "Name"] [:url "URL"] [:tags "Tags"]]]
     [(if (empty? (k errors)) :div.control-group :div.control-group.error)
      (label {:class :control-label} k l)
-     [:div.controls (text-field k (k params)) (control-error (k errors))]])
+     [:div.controls (text-field k (k params)) (cmn/control-error (k errors))]])
   [(if (empty? (:notes errors)) :div.control-group :div.control-group.error)
    (label {:class :control-label} :notes "Notes")
-   [:div.controls (text-area :notes (:notes params)) (control-error (:notes errors))]])
+   [:div.controls (text-area :notes (:notes params)) (cmn/control-error (:notes errors))]])
 
 (defn- gen-modal-id [id] (str id "-modal"))
 
@@ -168,9 +165,14 @@ function delBmModalForm(formId,url,msgId) {
                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                (submit-button {:class "btn btn-primary"} "Delete")]])))
 
-(defn bookmark-page [{params :params :as req}]
+(def ^:private bookmark-pager (cmn/make-paging "/bookmark" 20)) 
+
+(defn bookmark-page [{{:keys [tag curr-page]} :params :as req}]
   (let [add-bm-modal-id-prefix "add-boomkark"
-        add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)]
+        add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)
+        result-cnt (model/select-cnt user tag)
+        curr-page (err/with-dflt 1 (Integer. curr-page))
+        {:keys [pager num-pages display-per-page start-row end-row]} (bookmark-pager result-cnt curr-page)]
     (layout :nav
             [:div.nav-collapse.collapse
              [:ul.nav
@@ -205,6 +207,7 @@ function delBmModalForm(formId,url,msgId) {
                          (link-to {:data-toggle :modal} (str "#" (gen-modal-id (edit-bm-modal-prefix-fn (:bookmark-id bm)))) [:i.icon-edit])
                          "&nbsp;&nbsp;"
                          (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
+                  
                   (map del-bm-modal bms)
                   (map #(save-bm-modal (edit-bm-modal-prefix-fn (:bookmark-id %)) "Edit" %) bms)))]
               [:div.span2]]
