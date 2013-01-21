@@ -8,6 +8,7 @@
    :body "Hello, world"})
 
 (defn -main [& m]
+  (println "alan....")
   (run-jetty #'app {:join? false :port (Integer. (or (System/getenv "PORT") (:port m) "8080"))}))
 
 (comment
