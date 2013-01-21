@@ -193,8 +193,7 @@ function delBmModalForm(formId,url,msgId) {
                  (for [[tag count] (model/select-tags (-> req auth/user :user-id))]
                    [:li (link-to (url "/bookmark" {:tag tag}) (str tag " (" count ")"))])]]]
               [:div.span8
-               (let [_ (println "bookmark-page params=" params)
-                     bms (if-let [tag (:tag params)]
+               (let [bms (if-let [tag (:tag params)]
                            (model/select-by-tag (-> req auth/user :user-id) tag max-entry-per-page start-row)
                            (model/select-all (-> req auth/user :user-id) max-entry-per-page start-row))
                      edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
@@ -210,7 +209,7 @@ function delBmModalForm(formId,url,msgId) {
                          (link-to {:data-toggle :modal} (str "#" (gen-modal-id (edit-bm-modal-prefix-fn (:bookmark-id bm)))) [:i.icon-edit])
                          "&nbsp;&nbsp;"
                          (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]
-                   pager]
+                   (when (> num-pages 1) pager)]
                   (map del-bm-modal bms)
                   (map #(save-bm-modal (edit-bm-modal-prefix-fn (:bookmark-id %)) "Edit" %) bms)))]
               [:div.span2]]
