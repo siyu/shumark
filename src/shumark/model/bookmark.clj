@@ -2,7 +2,7 @@
   (:require [clojure.java.jdbc :as jdbc]
             [clojure.string :as str]
             [shumark.model.db :as db]
-            [Shumark.util.mapper :as mapper]))
+            [shumark.util.mapper :as mapper]))
 
 (defn bookmark-mapper [res]
   (->> res
