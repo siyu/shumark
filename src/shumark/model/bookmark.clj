@@ -9,14 +9,22 @@
        (mapper/reduce-rows {:parent-keys [:bookmark-id :user-id :name :url :notes] :children-keys [:tag]})
        (map #(assoc % :tags (apply str (interpose " " (map :tag (:children %)))) ))))
 
-(defn select [user-id]
+(defn select-all [user-id limit offset]
   (db/with-db
     (jdbc/with-query-results res
       ["select b.bookmark_id, b.user_id, b.name, b.url, b.notes, bt.tag
         from bookmark b left outer join bookmark_tag bt on (b.bookmark_id = bt.bookmark_id)
         where b.user_id = ?
-        order by b.created desc limit ?" user-id 2]
+        order by b.created desc limit ? offset ?" user-id limit offset]
       (bookmark-mapper res))))
+
+(defn select-all-cnt [user-id]
+  (db/with-db
+    (jdbc/with-query-results res
+      ["select count(*) as total
+        from bookmark b left outer join bookmark_tag bt on (b.bookmark_id = bt.bookmark_id)
+        where b.user_id = ?" user-id]
+      (-> res first :total))))
 
 (defn select-by-tag [user-id tag]
   (db/with-db

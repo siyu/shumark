@@ -16,12 +16,12 @@
   (fn [total-cnt curr-page & [more-params]]
     (let [num-pages (int (/ total-cnt display-per-page))
           num-pages (if (> (mod total-cnt display-per-page) 0) (inc num-pages) num-pages)
-          [start-row end-row] (if (> curr-page 0)
-                                [(inc (* (- curr-page 1) display-per-page)) (* curr-page display-per-page)]
-                                [1 display-per-page])
+          [start-row end-row] (if (>= curr-page 0)
+                                [(* curr-page display-per-page) (dec (* (inc curr-page) display-per-page))]
+                                [0 display-per-page])
           pager [:ul.pager
-                 [:li (link-to (url paging-url (merge more-params {:curr-page 1})) "<<")]
-                 [:li (link-to (url paging-url (merge more-params {:curr-page (max 1 (dec curr-page))})) "<")]
-                 [:li (link-to (url paging-url (merge more-params {:curr-page (min num-pages (inc curr-page))})) ">")]
-                 [:li (link-to (url paging-url (merge more-params {:curr-page num-pages} more-params)) ">>")]]]
+                 [:li (link-to (url paging-url (merge more-params {:curr-page 0})) "<<")]
+                 [:li (link-to (url paging-url (merge more-params {:curr-page (max 0 (dec curr-page))})) "<")]
+                 [:li (link-to (url paging-url (merge more-params {:curr-page (min (dec num-pages) (inc curr-page))})) ">")]
+                 [:li (link-to (url paging-url (merge more-params {:curr-page (dec num-pages)} more-params)) ">>")]]]
       {:pager pager :start-row start-row :end-row end-row :num-pages num-pages :display-per-page display-per-page})))

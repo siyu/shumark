@@ -165,14 +165,16 @@ function delBmModalForm(formId,url,msgId) {
                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                (submit-button {:class "btn btn-primary"} "Delete")]])))
 
-(def ^:private bookmark-pager (cmn/make-paging "/bookmark" 20)) 
+(def ^:private max-entry-per-page 2)
+(def ^:private bookmark-pager (cmn/make-paging "/bookmark" max-entry-per-page)) 
 
-(defn bookmark-page [{{:keys [tag curr-page]} :params :as req}]
+(defn bookmark-page [{{:keys [tag curr-page] :as params} :params :as req}]
   (let [add-bm-modal-id-prefix "add-boomkark"
         add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)
-        result-cnt (model/select-cnt user tag)
-        curr-page (err/with-dflt 1 (Integer. curr-page))
-        {:keys [pager num-pages display-per-page start-row end-row]} (bookmark-pager result-cnt curr-page)]
+        result-cnt (model/select-all-cnt (-> req auth/user :user-id))
+        curr-page (err/with-dflt 0 (Integer. curr-page))
+        {:keys [pager num-pages display-per-page start-row end-row]} (bookmark-pager result-cnt curr-page)
+        _ (println "start-row:" start-row)]
     (layout :nav
             [:div.nav-collapse.collapse
              [:ul.nav
@@ -193,7 +195,7 @@ function delBmModalForm(formId,url,msgId) {
                (let [_ (println "bookmark-page params=" params)
                      bms (if-let [tag (:tag params)]
                            (model/select-by-tag (-> req auth/user :user-id) tag)
-                           (model/select (-> req auth/user :user-id)))
+                           (model/select-all (-> req auth/user :user-id) max-entry-per-page start-row))
                      edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
                  (html
                   [:div.well
@@ -206,8 +208,9 @@ function delBmModalForm(formId,url,msgId) {
                         [:span {:id (edit-del-span-id bm)} "&nbsp;&nbsp;-&nbsp;&nbsp;"
                          (link-to {:data-toggle :modal} (str "#" (gen-modal-id (edit-bm-modal-prefix-fn (:bookmark-id bm)))) [:i.icon-edit])
                          "&nbsp;&nbsp;"
-                         (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]]
-                  
+                         (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]
+                   pager
+                   [:h (str "start-row:" start-row)]]
                   (map del-bm-modal bms)
                   (map #(save-bm-modal (edit-bm-modal-prefix-fn (:bookmark-id %)) "Edit" %) bms)))]
               [:div.span2]]
