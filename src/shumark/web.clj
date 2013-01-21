@@ -3,8 +3,7 @@
   (:require [shumark.app :as app]))
 
 (defn -main [& m]
-  (run-jetty #'app/app {:join? false
-                       :port (Integer. (or (System/getenv "PORT") (:port m) "8080"))}))
+  (run-jetty #'app/app {:join? false :port (Integer. (or (System/getenv "PORT") (:port m) "8080"))}))
 
 (comment
   (-main))

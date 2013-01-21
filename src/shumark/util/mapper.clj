@@ -1,4 +1,4 @@
-(ns Shumark.util.mapper)
+(ns shumark.util.mapper)
 
 (defn reduce-rows
   "Reduce rows by specifying parent keys and children keys.
