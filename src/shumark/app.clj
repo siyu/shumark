@@ -165,7 +165,7 @@ function delBmModalForm(formId,url,msgId) {
                (reset-button {:class :btn :data-dismiss :modal :aria-hidden :true} "Cancel")
                (submit-button {:class "btn btn-primary"} "Delete")]])))
 
-(def ^:private max-entry-per-page 2)
+(def ^:private max-entry-per-page 20)
 (def ^:private bookmark-pager (cmn/make-paging "/bookmark" max-entry-per-page)) 
 
 (defn bookmark-page [{{:keys [tag curr-page] :as params} :params :as req}]
