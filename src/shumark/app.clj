@@ -171,10 +171,11 @@ function delBmModalForm(formId,url,msgId) {
 (defn bookmark-page [{{:keys [tag curr-page] :as params} :params :as req}]
   (let [add-bm-modal-id-prefix "add-boomkark"
         add-bm-modal-id (gen-modal-id add-bm-modal-id-prefix)
-        result-cnt (model/select-all-cnt (-> req auth/user :user-id))
+        result-cnt (if-let [tag (:tag params)]
+                           (model/select-by-tag-cnt (-> req auth/user :user-id) tag)
+                           (model/select-all-cnt (-> req auth/user :user-id)))
         curr-page (err/with-dflt 0 (Integer. curr-page))
-        {:keys [pager num-pages display-per-page start-row end-row]} (bookmark-pager result-cnt curr-page)
-        _ (println "start-row:" start-row)]
+        {:keys [pager num-pages display-per-page start-row end-row]} (bookmark-pager result-cnt curr-page (select-keys params [:tag]))]
     (layout :nav
             [:div.nav-collapse.collapse
              [:ul.nav
@@ -194,7 +195,7 @@ function delBmModalForm(formId,url,msgId) {
               [:div.span8
                (let [_ (println "bookmark-page params=" params)
                      bms (if-let [tag (:tag params)]
-                           (model/select-by-tag (-> req auth/user :user-id) tag)
+                           (model/select-by-tag (-> req auth/user :user-id) tag max-entry-per-page start-row)
                            (model/select-all (-> req auth/user :user-id) max-entry-per-page start-row))
                      edit-bm-modal-prefix-fn #(str "edit-bookmark-id-" %)]
                  (html
@@ -209,8 +210,7 @@ function delBmModalForm(formId,url,msgId) {
                          (link-to {:data-toggle :modal} (str "#" (gen-modal-id (edit-bm-modal-prefix-fn (:bookmark-id bm)))) [:i.icon-edit])
                          "&nbsp;&nbsp;"
                          (link-to {:data-toggle :modal} (str "#" (del-bm-modal-id bm)) [:i.icon-remove])]]])]
-                   pager
-                   [:h (str "start-row:" start-row)]]
+                   pager]
                   (map del-bm-modal bms)
                   (map #(save-bm-modal (edit-bm-modal-prefix-fn (:bookmark-id %)) "Edit" %) bms)))]
               [:div.span2]]

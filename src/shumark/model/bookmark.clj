@@ -26,13 +26,22 @@
         where b.user_id = ?" user-id]
       (-> res first :total))))
 
-(defn select-by-tag [user-id tag]
+(defn select-by-tag-cnt [user-id tag]
+  (db/with-db
+    (jdbc/with-query-results res
+      ["select count(*) as total
+        from bookmark b inner join bookmark_tag bt on (b.bookmark_id = bt.bookmark_id)
+        where b.user_id = ?
+          and bt.tag = ?" user-id tag]
+      (-> res first :total))))
+
+(defn select-by-tag [user-id tag limit offset]
   (db/with-db
     (jdbc/with-query-results res
       ["select b.bookmark_id, b.user_id, b.name, b.url, b.notes, bt.tag
         from bookmark b inner join bookmark_tag bt on (b.bookmark_id = bt.bookmark_id)
         where b.user_id = ?
-          and bt.tag = ? order by b.created desc" user-id tag]
+          and bt.tag = ? order by b.created desc limit ? offset ?" user-id tag limit offset]
       (bookmark-mapper res))))
 
 (defn insert-bookmark- [m]
