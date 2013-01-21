@@ -16,4 +16,5 @@
                  [ring-anti-forgery "0.2.1"]
                  [org.openid4java/openid4java-consumer "0.9.5"]]
   :plugins [[environ/environ.lein "0.3.0"]]
-  :hooks [environ.leiningen.hooks])
+  :hooks [environ.leiningen.hooks]
+  :min-lein-version "2.0.0")
