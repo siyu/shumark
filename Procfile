@@ -1,1 +1,1 @@
-web: lein with-profile production trampoline run -m shumark.web
+web: lein trampoline run -m shumark.web
