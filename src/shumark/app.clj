@@ -77,6 +77,7 @@ function delBmModalForm(formId,url,msgId) {
          [:head
           [:meta {:charset :utf-8}]
           [:title "Shumark"]
+          [:meta {:name :description :content "Bookmarking web app"}]
           [:meta {:name :viewport :content "width=device-width, initial-scale=1.0"}]
           (include-css "/css/bootstrap.css" "/css/bootstrap-responsive.css")
           [:style "
