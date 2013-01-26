@@ -100,7 +100,7 @@ function delBmModalForm(formId,url,msgId) {
            [:div.container-fluid
             content
             [:hr]
-            [:footer [:p "Copyright © Si Yu 2013"]]]]          
+            [:footer [:p "Copyright © Si Yu 2013.  Email: yusimind<at>gmail[.]com"]]]]          
           (include-js "/js/bootstrap.js")]))
 
 (defhtml save-bm-modal-body [modal-msg-id & [params errors]]
