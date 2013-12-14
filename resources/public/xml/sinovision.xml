@@ -9,14 +9,11 @@
 		<contentId>10001</contentId>
 		<contentType>Talk</contentType>
 		<contentQuality>SD</contentQuality>
-		<streamFormat>m3u8</streamFormat>
+		<streamFormat>hls</streamFormat>
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
 			<streamUrl>http://ec.sinovision.net/video/tsen/index.m3u8</streamUrl>
 		</media>
-		<synopsis></synopsis>
-		<genres>Clip</genres>
-		<runtime>1260</runtime>
 	</item>	
 </feed>
