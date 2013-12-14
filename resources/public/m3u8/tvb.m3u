@@ -1,0 +1,21 @@
+#EXTM3U
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=480000,RESOLUTION=480x270,CODECS="avc1.66.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_432_av-p.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=480000,RESOLUTION=480x270,CODECS="avc1.66.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_432_av-b.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=912000,RESOLUTION=854x480,CODECS="avc1.77.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_864_av-p.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=912000,RESOLUTION=854x480,CODECS="avc1.77.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_864_av-b.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=140000,RESOLUTION=320x180,CODECS="avc1.66.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_108_av-b.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=248000,RESOLUTION=480x270,CODECS="avc1.66.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_216_av-b.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=696000,RESOLUTION=640x360,CODECS="avc1.77.30, mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_648_av-b.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1144000,RESOLUTION=1280x720
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_1080_av-b.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=48000,CODECS="mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_432_a-p.m3u8?sd=10&rebase=on
+#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=32000,CODECS="mp4a.40.2"
+http://hdlivetvb-lh.akamaihd.net/i/hdj_1@135131/index_108_a-b.m3u8?sd=10&rebase=on
