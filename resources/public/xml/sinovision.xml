@@ -8,10 +8,10 @@
 		<title>Sinovision</title>
 		<contentId>10001</contentId>
 		<contentType>News</contentType>
-		<contentQuality>SD</contentQuality>
+		<contentQuality>HD</contentQuality>
 		<streamFormat>hls</streamFormat>
 		<media>
-			<streamQuality>SD</streamQuality>
+			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
 			<streamUrl>http://ec.sinovision.net/video/tsen/index.m3u8</streamUrl>
 		</media>
