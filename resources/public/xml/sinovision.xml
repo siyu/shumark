@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <feed>
 	<!-- resultLength indicates the total number of results for this feed -->
-	<resultLength>1</resultLength>
+	<!--<resultLength>1</resultLength>-->
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
-	<endIndex>1</endIndex>
+	<!--<endIndex>1</endIndex>-->
 	<item sdImg="http://rokudev.roku.com/rokudev/examples/videoplayer/images/JimFallon.jpg" hdImg="http://rokudev.roku.com/rokudev/examples/videoplayer/images/JimFallon.jpg">
 		<title>Sinovision</title>
 		<contentId>10001</contentId>
-		<contentType>Talk</contentType>
-		<contentQuality>SD</contentQuality>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
 		<streamFormat>hls</streamFormat>
 		<media>
 			<streamQuality>HD</streamQuality>
-			<streamBitrate>0</streamBitrate>
+			<!--<streamBitrate>0</streamBitrate>-->
 			<streamUrl>http://ec.sinovision.net/video/tsen/index.m3u8</streamUrl>
 		</media>
 	</item>	
