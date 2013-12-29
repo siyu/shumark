@@ -4,7 +4,7 @@
 	<resultLength>8</resultLength>
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
 	<endIndex>1</endIndex>
-	<item sdImg="http://mrminix.wikispaces.com/file/view/red-number-1.jpeg/365241178/red-number-1.jpeg" hdImg="http://mrminix.wikispaces.com/file/view/red-number-1.jpeg/365241178/red-number-1.jpeg">
+	<item sdImg="" hdImg="">
 		<title>NBA - 1</title>
 		<contentId>20001</contentId>
 		<contentType>Sport</contentType>
@@ -19,7 +19,7 @@
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
-        <item sdImg="http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Number_2_in_light_blue_rounded_square.svg/512px-Number_2_in_light_blue_rounded_square.svg.png" hdImg="http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Number_2_in_light_blue_rounded_square.svg/512px-Number_2_in_light_blue_rounded_square.svg.png">
+        <item sdImg="" hdImg="">
 		<title>NBA - 2</title>
 		<contentId>20002</contentId>
 		<contentType>Sport</contentType>
@@ -35,7 +35,7 @@
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="http://www.lgsports.ca/wp-content/uploads/2013/11/number-3.png" hdImg="http://www.lgsports.ca/wp-content/uploads/2013/11/number-3.png">
+        <item sdImg="" hdImg="">
 		<title>NBA - 3</title>
 		<contentId>20003</contentId>
 		<contentType>Sport</contentType>
@@ -51,7 +51,7 @@
                 <runtime></runtime>
 	</item>	
 
-<item sdImg="http://www.pushtechnology.com/wp-content/uploads/2013/06/4NumberFourInCircle.png" hdImg="http://www.pushtechnology.com/wp-content/uploads/2013/06/4NumberFourInCircle.png">
+        <item sdImg="" hdImg="">
 		<title>NBA - 4</title>
 		<contentId>20004</contentId>
 		<contentType>Sport</contentType>
@@ -67,7 +67,7 @@
                 <runtime></runtime>
 	</item>	
 
-<item sdImg="http://3.bp.blogspot.com/-ZUaqBS3UN3I/TbHpXNb-p3I/AAAAAAAACI4/xkVhvnpTPmE/s1600/channel+5.jpg" hdImg="http://3.bp.blogspot.com/-ZUaqBS3UN3I/TbHpXNb-p3I/AAAAAAAACI4/xkVhvnpTPmE/s1600/channel+5.jpg">
+        <item sdImg="" hdImg="">
 		<title>NBA - 5</title>
 		<contentId>20005</contentId>
 		<contentType>Sport</contentType>
@@ -83,7 +83,7 @@
                 <runtime></runtime>
 	</item>	
 
-<item sdImg="http://public.ifbyphone.com/wp-content/uploads/2013/03/ios.jpg" hdImg="http://public.ifbyphone.com/wp-content/uploads/2013/03/ios.jpg">
+        <item sdImg="" hdImg="">
 		<title>NBA - 6</title>
 		<contentId>20006</contentId>
 		<contentType>Sport</contentType>
@@ -99,7 +99,7 @@
                 <runtime></runtime>
 	</item>	
 
-<item sdImg="http://www.fastacservice.com/Portals/171146/images/number-7-md.png" hdImg="http://www.fastacservice.com/Portals/171146/images/number-7-md.png">
+        <item sdImg="" hdImg="">
 		<title>NBA - 7</title>
 		<contentId>20007</contentId>
 		<contentType>Sport</contentType>
@@ -115,7 +115,7 @@
                 <runtime></runtime>
 	</item>	
 
-<item sdImg="http://www.gazellessystems.com/Portals/116436/images/8-Ways-To-Manage-Using-Your-Core-Values.jpg" hdImg="http://www.gazellessystems.com/Portals/116436/images/8-Ways-To-Manage-Using-Your-Core-Values.jpg">
+        <item sdImg="" hdImg="">
 		<title>NBA - 8</title>
 		<contentId>20008</contentId>
 		<contentType>Sport</contentType>
