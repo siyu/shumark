@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <feed>
 	<!-- resultLength indicates the total number of results for this feed -->
-	<resultLength>2</resultLength>
+	<resultLength>4</resultLength>
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
-	<endIndex>2</endIndex>
+	<endIndex>4</endIndex>
 	<item sdImg="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg" hdImg="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg">
-		<title>高清翡翠台</title>
+		<title>TVB - 翡翠台</title>
 		<contentId>10001</contentId>
 		<contentType>News</contentType>
 		<contentQuality>HD</contentQuality>
@@ -19,8 +19,9 @@
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
+
         <item sdImg="http://www.prlog.org/12202655-j2-retail-systems-inc.jpg" hdImg="http://www.prlog.org/12202655-j2-retail-systems-inc.jpg">
-		<title>無綫電視J2</title>
+		<title>TVB J2</title>
 		<contentId>10002</contentId>
 		<contentType>News</contentType>
 		<contentQuality>HD</contentQuality>
@@ -33,6 +34,38 @@
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
-	</item>	
+	</item>
+
+        <item sdImg="http://d3u20pllglzex1.cloudfront.net/channel-v/covers/5778-1381939316.jpg" hdImg="http://d3u20pllglzex1.cloudfront.net/channel-v/covers/5778-1381939316.jpg">
+		<title><![CDATA[TVB互動新聞台]]></title>
+		<contentId>10003</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://rtsp.vdowowza.tvb.com:1935/tvblive/mobile_inews_600.stream/chunklist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+	<item sdImg="http://a2.mzstatic.com/us/r30/Purple/v4/31/5c/b6/315cb676-e6ea-e964-dec6-22aede499d4b/icon_256.png" hdImg="http://a2.mzstatic.com/us/r30/Purple/v4/31/5c/b6/315cb676-e6ea-e964-dec6-22aede499d4b/icon_256.png">
+		<title>ifeng - 凤凰资讯</title>
+		<contentId>10011</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://live.3gv.ifeng.com/live/FHZXHD.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
         
 </feed>
