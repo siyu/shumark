@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>2</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>2</endIndex>
+	<item sdImg="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg" hdImg="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg">
+		<title>高清翡翠台</title>
+		<contentId>10001</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://token.tvb.com/stream/live/hls/mobilehd_hdj.smil</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+        <item sdImg="http://www.prlog.org/12202655-j2-retail-systems-inc.jpg" hdImg="http://www.prlog.org/12202655-j2-retail-systems-inc.jpg">
+		<title>無綫電視J2</title>
+		<contentId>10002</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://token.tvb.com/stream/live/hls/mobilehd_hdj.smil.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+        
+</feed>

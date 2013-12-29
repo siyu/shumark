@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>2</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>2</endIndex>
+	<item sdImg="http://mrminix.wikispaces.com/file/view/red-number-1.jpeg/365241178/red-number-1.jpeg" hdImg="http://mrminix.wikispaces.com/file/view/red-number-1.jpeg/365241178/red-number-1.jpeg">
+		<title>NBA - 1</title>
+		<contentId>20001</contentId>
+		<contentType>Sport</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba1/workflow4/mnf.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+        <item sdImg="http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Number_2_in_light_blue_rounded_square.svg/512px-Number_2_in_light_blue_rounded_square.svg.png" hdImg="http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Number_2_in_light_blue_rounded_square.svg/512px-Number_2_in_light_blue_rounded_square.svg.png">
+		<title>NBA - 2</title>
+		<contentId>20002</contentId>
+		<contentType>Sport</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba2/workflow4/mnf.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+        
+</feed>
