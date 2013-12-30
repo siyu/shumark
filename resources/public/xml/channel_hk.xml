@@ -4,7 +4,7 @@
 	<resultLength>6</resultLength>
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
 	<endIndex>1</endIndex>
-	<item sdImg="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg" hdImg="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg">
+	<item sdImg="http://img.b.tvb.com/wp-content/blogs.dir/tvbi/files/2009/03/tvbusa-300x235.jpg" hdImg="http://img.b.tvb.com/wp-content/blogs.dir/tvbi/files/2009/03/tvbusa-300x235.jpg">
 		<title>TVB</title>
 		<contentId>10001</contentId>
 		<contentType>News</contentType>
@@ -20,7 +20,7 @@
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="http://www.prlog.org/12202655-j2-retail-systems-inc.jpg" hdImg="http://www.prlog.org/12202655-j2-retail-systems-inc.jpg">
+        <item sdImg="http://www.1314tv.com/pic/uploadimg/2013-1/201319574550274.jpg" hdImg="http://www.1314tv.com/pic/uploadimg/2013-1/201319574550274.jpg">
 		<title>TVB J2</title>
 		<contentId>10002</contentId>
 		<contentType>News</contentType>

@@ -8,8 +8,13 @@
               sd_img="http://rokudev.roku.com/rokudev/examples/videoplayer/images/missing.png"
               hd_img="http://rokudev.roku.com/rokudev/examples/videoplayer/images/missing.png"/>
           -->
+
+          <!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>2</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>1</endIndex>
 	  
-	<category title="港台電視" description="港台電視" sd_img="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg" hd_img="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg">
+	<category title="港台電視" description="HK" sd_img="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg" hd_img="http://bacram1400.com/yahoo_site_admin/assets/images/TVB_USA_logo.52233306_std.jpg">
 	  <categoryLeaf title="香港" description="香港" feed="http://shumark.herokuapp.com/xml/channel_hk.xml" />
 	</category>
 
