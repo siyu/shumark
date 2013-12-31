@@ -9,11 +9,6 @@
               hd_img="http://rokudev.roku.com/rokudev/examples/videoplayer/images/missing.png"/>
           -->
 
-          <!-- resultLength indicates the total number of results for this feed -->
-	<resultLength>2</resultLength>
-	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
-	<endIndex>1</endIndex>
-	  
 	<category title="港台電視" description="HK" sd_img="http://img.b.tvb.com/wp-content/blogs.dir/tvbi/files/2009/03/tvbusa-300x235.jpg" hd_img="http://img.b.tvb.com/wp-content/blogs.dir/tvbi/files/2009/03/tvbusa-300x235.jpg">
 	  <categoryLeaf title="香港" description="香港" feed="http://shumark.herokuapp.com/xml/channel_hk.xml" />
 	</category>
