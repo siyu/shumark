@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>1</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>1</endIndex>
+	<item sdImg="http://www.cutv.com/images/2011/8/16/20118161313489548086_17.jpg" hdImg="http://www.cutv.com/images/2011/8/16/20118161313489548086_17.jpg">
+		<title>JiNan - 济南新闻</title>
+		<contentId>30001</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://stream1.ijntv.cn/xwhd/hd/live.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+        
+</feed>

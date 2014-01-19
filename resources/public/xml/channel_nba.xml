@@ -4,7 +4,7 @@
 	<resultLength>8</resultLength>
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
 	<endIndex>1</endIndex>
-	<item sdImg="" hdImg="">
+	<item sdImg="http://newlifehouse.com/wp-content/uploads/2013/11/number1.png" hdImg="http://newlifehouse.com/wp-content/uploads/2013/11/number1.png">
 		<title>NBA - 1</title>
 		<contentId>20001</contentId>
 		<contentType>Sport</contentType>
@@ -13,13 +13,13 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba1/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba1/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
-        <item sdImg="" hdImg="">
+        <item sdImg="http://www.tenlegs.com/blog/wp-content/uploads/2011/10/two-pic.png" hdImg="http://www.tenlegs.com/blog/wp-content/uploads/2011/10/two-pic.png">
 		<title>NBA - 2</title>
 		<contentId>20002</contentId>
 		<contentType>Sport</contentType>
@@ -28,14 +28,14 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba2/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba2/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="" hdImg="">
+        <item sdImg="http://www.clker.com/cliparts/x/B/x/Y/R/L/number-3-md.png" hdImg="http://www.clker.com/cliparts/x/B/x/Y/R/L/number-3-md.png">
 		<title>NBA - 3</title>
 		<contentId>20003</contentId>
 		<contentType>Sport</contentType>
@@ -44,14 +44,14 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba3/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba3/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="" hdImg="">
+        <item sdImg="http://www.corynnepero.com/wp-content/uploads/2011/10/number4.gif" hdImg="http://www.corynnepero.com/wp-content/uploads/2011/10/number4.gif">
 		<title>NBA - 4</title>
 		<contentId>20004</contentId>
 		<contentType>Sport</contentType>
@@ -60,14 +60,14 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba4/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba4/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="" hdImg="">
+        <item sdImg="http://www.papillionaire.com/wp-content/uploads/2013/12/5-reasons-for-social-media.png" hdImg="http://www.papillionaire.com/wp-content/uploads/2013/12/5-reasons-for-social-media.png">
 		<title>NBA - 5</title>
 		<contentId>20005</contentId>
 		<contentType>Sport</contentType>
@@ -76,14 +76,14 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba5/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba5/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="" hdImg="">
+        <item sdImg="http://jenntgrace.com/wp-content/uploads/2012/12/6.gif" hdImg="http://jenntgrace.com/wp-content/uploads/2012/12/6.gif">
 		<title>NBA - 6</title>
 		<contentId>20006</contentId>
 		<contentType>Sport</contentType>
@@ -92,14 +92,14 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba6/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba6/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="" hdImg="">
+        <item sdImg="http://www.dbadesigns.com/wp-content/uploads/2013/07/number-7-md1.png" hdImg="http://www.dbadesigns.com/wp-content/uploads/2013/07/number-7-md1.png">
 		<title>NBA - 7</title>
 		<contentId>20007</contentId>
 		<contentType>Sport</contentType>
@@ -108,14 +108,14 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba7/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba7/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="" hdImg="">
+        <item sdImg="http://1.bp.blogspot.com/_zSwUvqyny3U/TOd5Hqc6eHI/AAAAAAAAAB8/o9GYcvPoeqE/s1600/VWNUM8.jpg" hdImg="http://1.bp.blogspot.com/_zSwUvqyny3U/TOd5Hqc6eHI/AAAAAAAAAB8/o9GYcvPoeqE/s1600/VWNUM8.jpg">
 		<title>NBA - 8</title>
 		<contentId>20008</contentId>
 		<contentType>Sport</contentType>
@@ -124,7 +124,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive3.bestv.com.wscdns.com/live/hdnba8/workflow4/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba8/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>

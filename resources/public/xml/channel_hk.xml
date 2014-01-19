@@ -52,6 +52,22 @@
                 <runtime></runtime>
 	</item>
 
+        <item sdImg="http://upload.wikimedia.org/wikipedia/zh/4/46/I-CABLE_News_Channel.png" hdImg="http://upload.wikimedia.org/wikipedia/zh/4/46/I-CABLE_News_Channel.png">
+		<title>HK Cable News</title>
+		<contentId>10004</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://61.10.2.134:1935/live_ts/ch10.live/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
 	<item sdImg="http://a2.mzstatic.com/us/r30/Purple/v4/31/5c/b6/315cb676-e6ea-e964-dec6-22aede499d4b/icon_256.png" hdImg="http://a2.mzstatic.com/us/r30/Purple/v4/31/5c/b6/315cb676-e6ea-e964-dec6-22aede499d4b/icon_256.png">
 		<title>ifeng - HD</title>
 		<contentId>10011</contentId>
