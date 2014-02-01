@@ -13,9 +13,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>
-                          <![CDATA[http://vdn.apps.cntv.cn/api/getLive302.do?channel=pa://cctv_p2p_hdCCTV1&type=ipad]]>
-                        </streamUrl>
+			<streamUrl><![CDATA[http://tvhd.ws.live.cntv.cn/cache/1_/seg0/index.m3u8?AUTH=st%3D1391044955%7Eexp%3D1391131355%7Eacl%3D%2F*%7Ehmac%3D43a0534cbd7ce9d1a6a42dd2f2703a40ad18c6da366dbbb7d2021a125c2b0de1]]></streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
