@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>1</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>1</endIndex>
+	<item sdImg="http://www.jaxin.de/chinese/Sat/CCTV1.files/image003.jpg" hdImg="http://www.jaxin.de/chinese/Sat/CCTV1.files/image003.jpg">
+		<title>CCTV-1</title>
+		<contentId>30001</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://vdn.apps.cntv.cn/api/getLive302.do?channel=pa://cctv_p2p_hdCCTV1&type=ipad</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+        
+</feed>
