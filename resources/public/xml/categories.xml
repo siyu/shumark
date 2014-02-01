@@ -13,7 +13,7 @@
 	  <categoryLeaf title="香港" description="香港" feed="http://shumark.herokuapp.com/xml/channel_hk.xml" />
 	</category>
 
-	<category title="体育 - Sport" description="体育 - Sport" sd_img="https://s3.amazonaws.com/file.imleagues/Images/Sports/DefaultLogo/all_sports_3.png" hd_img="https://s3.amazonaws.com/file.imleagues/Images/Sports/DefaultLogo/all_sports_3.png">
+	<category title="体育 - Sport" description="体育 - Sport" sd_img="http://www.e-steroid.com/wp-content/uploads/2009/06/steroids-use-in-sports.jpg" hd_img="http://www.e-steroid.com/wp-content/uploads/2009/06/steroids-use-in-sports.jpg">
 		<categoryLeaf title="NBA" description="NBA" feed="http://shumark.herokuapp.com/xml/channel_nba.xml" />
 	</category>
 
