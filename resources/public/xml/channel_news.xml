@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>6</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>1</endIndex>
+
+	<item sdImg="http://www.zahipoint.com/wp-content/uploads/2011/12/cnn1-300x143.png" hdImg="http://www.zahipoint.com/wp-content/uploads/2011/12/cnn1-300x143.png">
+		<title>CNN</title>
+		<contentId>50001</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://livestation_hls-lh.akamaihd.net/i/cnn_en@105455/master.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+
+	<item sdImg="http://upload.wikimedia.org/wikipedia/en/thumb/f/ff/BBC_News.svg/200px-BBC_News.svg.png" hdImg="http://upload.wikimedia.org/wikipedia/en/thumb/f/ff/BBC_News.svg/200px-BBC_News.svg.png">
+		<title>BBC</title>
+		<contentId>50002</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://hd4.lsops.net/live/bbcnews_en_hls.smil/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://www.bbc.co.uk/blogs/theeditors/bbcworld_logo_2.jpg" hdImg="http://www.bbc.co.uk/blogs/theeditors/bbcworld_logo_2.jpg">
+		<title>BBC World</title>
+		<contentId>50003</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://akamedia2.lsops.net/live/bbcworld1_en.smil/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://upload.wikimedia.org/wikipedia/id/6/69/Cnbc.png" hdImg="http://upload.wikimedia.org/wikipedia/id/6/69/Cnbc.png">
+		<title>CNBC</title>
+		<contentId>50004</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://livestation_hls-lh.akamaihd.net/i/cnbc_en@106428/master.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://www.mediabistro.com/fishbowlny/files/2012/03/Bloomberg-News.jpg" hdImg="http://www.mediabistro.com/fishbowlny/files/2012/03/Bloomberg-News.jpg">
+		<title>Bloomberg</title>
+		<contentId>50005</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://hd4.lsops.net/live/bloomber_en_hls.smil/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://lalamusanews.com/tv/images/bloomberg-tv-asia.jpg" hdImg="http://lalamusanews.com/tv/images/bloomberg-tv-asia.jpg">
+		<title>Bloomberg Asia</title>
+		<contentId>50006</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://live.bltvios.com.edgesuite.net/oza2w6q8gX9WSkRx13bskffWIuyf/w4dTdlNToKUvtqJ1WMDu5IuNP9as1iF0/master.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+        
+</feed>
