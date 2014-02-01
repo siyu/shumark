@@ -17,6 +17,10 @@
 		<categoryLeaf title="NBA" description="NBA" feed="http://shumark.herokuapp.com/xml/channel_nba.xml" />
 	</category>
 
+        <category title="CCTV" description="CCTV" sd_img="http://www.applitek.com/Documents/images/cctv.jpeg" hd_img="http://www.applitek.com/Documents/images/cctv.jpeg">
+		<categoryLeaf title="CCTV" description="CCTV" feed="http://shumark.herokuapp.com/xml/channel_cctv.xml" />
+	</category>
+
         <category title="國語 - Mandarin" description="國語 - Mandarin" sd_img="http://www.handedict.de/fr/zi/images/hanzi/kai/small/%E5%9C%8B_kai.png" hd_img="http://www.handedict.de/fr/zi/images/hanzi/kai/small/%E5%9C%8B_kai.png">
 		<categoryLeaf title="Mandarin" description="Mandarin" feed="http://shumark.herokuapp.com/xml/channel_mandarin.xml" />
 	</category>
