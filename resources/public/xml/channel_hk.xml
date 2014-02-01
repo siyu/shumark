@@ -20,7 +20,7 @@
                 <runtime></runtime>
 	</item>	
 
-        <item sdImg="http://www.lyngsat-logo.com/logo/tv/tt/tvb_2.jpg" hdImg="http://www.lyngsat-logo.com/logo/tv/tt/tvb_2.jpg">
+        <item sdImg="http://www.1314tv.com/pic/uploadimg/2013-1/201319574550274.jpg" hdImg="http://www.1314tv.com/pic/uploadimg/2013-1/201319574550274.jpg">
 		<title>TVB J2</title>
 		<contentId>10002</contentId>
 		<contentType>News</contentType>
@@ -36,7 +36,7 @@
                 <runtime></runtime>
 	</item>
 
-        <item sdImg="http://d3u20pllglzex1.cloudfront.net/channel-v/covers/5778-1381939316.jpg" hdImg="http://d3u20pllglzex1.cloudfront.net/channel-v/covers/5778-1381939316.jpg">
+        <item sdImg="http://www.allchina.cn/exchange/zhuanmai/userupfile/images/2009727781977773605.jpg" hdImg="http://www.allchina.cn/exchange/zhuanmai/userupfile/images/2009727781977773605.jpg">
 		<title>TVB - News</title>
 		<contentId>10003</contentId>
 		<contentType>News</contentType>
