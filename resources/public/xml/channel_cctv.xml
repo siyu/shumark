@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <feed>
 	<!-- resultLength indicates the total number of results for this feed -->
-	<resultLength>1</resultLength>
+	<resultLength>12</resultLength>
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
 	<endIndex>1</endIndex>
-	<item sdImg="http://www.jaxin.de/chinese/Sat/CCTV1.files/image003.jpg" hdImg="http://www.jaxin.de/chinese/Sat/CCTV1.files/image003.jpg">
+	<item sdImg="http://p1.img.cctvpic.com/nettv/cctv/cctv1/20101228/images/100762_1293500335146.jpg" hdImg="http://p1.img.cctvpic.com/nettv/cctv/cctv1/20101228/images/100762_1293500335146.jpg">
 		<title>CCTV-1</title>
 		<contentId>30001</contentId>
 		<contentType>News</contentType>
@@ -19,5 +19,213 @@
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>	
+
+	<item sdImg="http://p4.img.cctvpic.com/nettv/cctv/cctv2/20101228/images/103441_1293517690108.jpg" hdImg="http://p4.img.cctvpic.com/nettv/cctv/cctv2/20101228/images/103441_1293517690108.jpg">
+		<title>CCTV-2</title>
+		<contentId>30002</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv2&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p2.img.cctvpic.com/nettv/cctv/CCTV3/20101228/images/102799_1293515868418.jpg" hdImg="http://p2.img.cctvpic.com/nettv/cctv/CCTV3/20101228/images/102799_1293515868418.jpg">
+		<title>CCTV-3</title>
+		<contentId>30003</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv3&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv4asia/20101228/images/100804_5770_1293500784117.jpg" hdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv4asia/20101228/images/100804_5770_1293500784117.jpg">
+		<title>CCTV-4</title>
+		<contentId>30004</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv4&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p2.img.cctvpic.com/nettv/cctv/cctv5/20101225/images/100363_6869_1293500238508.jpg" hdImg="http://p2.img.cctvpic.com/nettv/cctv/cctv5/20101225/images/100363_6869_1293500238508.jpg">
+		<title>CCTV-5</title>
+		<contentId>30005</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv5&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv6/20101228/images/104357_1293525901427.jpg" hdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv6/20101228/images/104357_1293525901427.jpg">
+		<title>CCTV-6</title>
+		<contentId>30006</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv6&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv7/20101228/images/100854_1293500951636.jpg" hdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv7/20101228/images/100854_1293500951636.jpg">
+		<title>CCTV-7</title>
+		<contentId>30007</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv7&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv8/20101228/images/100902_1293501332199.jpg" hdImg="http://p3.img.cctvpic.com/nettv/cctv/cctv8/20101228/images/100902_1293501332199.jpg">
+		<title>CCTV-8</title>
+		<contentId>30008</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv8&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p3.img.cctvpic.com/nettv/cctv/CCTV9/20101228/images/101212_1293503373893.jpg" hdImg="http://p3.img.cctvpic.com/nettv/cctv/CCTV9/20101228/images/101212_1293503373893.jpg">
+		<title>CCTV-9</title>
+		<contentId>30009</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv9&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p2.img.cctvpic.com/nettv/cctv/CCTV10/20101225/images/100664_3224_1293500641599.jpg" hdImg="http://p2.img.cctvpic.com/nettv/cctv/CCTV10/20101225/images/100664_3224_1293500641599.jpg">
+		<title>CCTV-10</title>
+		<contentId>30010</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv10&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p2.img.cctvpic.com/nettv/cctv/CCTV_11/20101228/images/100757_1293500293940.jpg" hdImg="http://p2.img.cctvpic.com/nettv/cctv/CCTV_11/20101228/images/100757_1293500293940.jpg">
+		<title>CCTV-11</title>
+		<contentId>30011</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv11&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p3.img.cctvpic.com/nettv/cctv/CCTV_12/20101228/images/100813_2306_1293500786594.jpg" hdImg="http://p3.img.cctvpic.com/nettv/cctv/CCTV_12/20101228/images/100813_2306_1293500786594.jpg">
+		<title>CCTV-12</title>
+		<contentId>30012</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctv12&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
+	<item sdImg="http://p2.img.cctvpic.com/nettv/cctv/cctvxinwen/20101228/images/100817_7900_1293500829406.jpg" hdImg="http://p2.img.cctvpic.com/nettv/cctv/cctvxinwen/20101228/images/100817_7900_1293500829406.jpg">
+		<title>CCTV-13</title>
+		<contentId>30013</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvnew&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+	<item sdImg="http://p5.img.cctvpic.com/nettv/cctv/CCTV_Music/20101228/images/100865_1293501080304.jpg" hdImg="http://p5.img.cctvpic.com/nettv/cctv/CCTV_Music/20101228/images/100865_1293501080304.jpg">
+		<title>CCTV-15</title>
+		<contentId>30015</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl><![CDATA[http://live.gslb.letv.com/gslb?stream_id=cctvmusic&tag=live&ext=m3u8&sign=live_tv&platid=10&splatid=1012]]></streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
         
 </feed>
