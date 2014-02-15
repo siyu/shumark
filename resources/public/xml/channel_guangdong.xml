@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>4</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>1</endIndex>
+
+        <item sdImg="http://www.chinamedia360.com/upload_image/%E5%B9%BF%E4%B8%9C%E6%96%B0%E9%97%BB%E9%A2%91%E9%81%93LOGO.jpg" hdImg="http://www.chinamedia360.com/upload_image/%E5%B9%BF%E4%B8%9C%E6%96%B0%E9%97%BB%E9%A2%91%E9%81%93LOGO.jpg">
+		<title>GuangDong News</title>
+		<contentId>10031</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://httplive.gdtv.cn:1935/live/xwpd/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://img0.weixinla.com/weixin/avatar/20130530/b9577b47af1471c58370e2ece56977f9.jpg" hdImg="http://img0.weixinla.com/weixin/avatar/20130530/b9577b47af1471c58370e2ece56977f9.jpg">
+		<title>GuangDong ZhuJiang</title>
+		<contentId>10032</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://httplive.gdtv.cn:1935/live/zjpd/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://www.guojitv.com/tv/upfile/85fd57ca-6667-4e4c-b280-0f99a7c35405.jpg" hdImg="http://www.guojitv.com/tv/upfile/85fd57ca-6667-4e4c-b280-0f99a7c35405.jpg">
+		<title>GuangDong Sport</title>
+		<contentId>10033</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://httplive.gdtv.cn:1935/live/sport/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://u01.img.tudou.com/data/imgs/d/049/171/912/4.jpg" hdImg="http://u01.img.tudou.com/data/imgs/d/049/171/912/4.jpg">
+		<title>GuangDong Real Estate</title>
+		<contentId>10034</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://httplive.gdtv.cn:1935/live/house/playlist.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+
+</feed>

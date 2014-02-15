@@ -13,6 +13,14 @@
 	  <categoryLeaf title="香港" description="香港" feed="http://shumark.herokuapp.com/xml/channel_hk.xml" />
 	</category>
 
+        <category title="廣東" description="Cantonese" sd_img="http://tv.114mo.com/tv_shouye/gdlogo.jpg" hd_img="http://tv.114mo.com/tv_shouye/gdlogo.jpg">
+	  <categoryLeaf title="廣東" description="Guang Dong" feed="http://shumark.herokuapp.com/xml/channel_guangdong.xml" />
+	</category>
+
+        <category title="凤凰" description="Ifeng" sd_img="http://upload.wikimedia.org/wikipedia/zh/thumb/3/34/Phoenix_Chinese.svg/180px-Phoenix_Chinese.svg.png" hd_img="http://upload.wikimedia.org/wikipedia/zh/thumb/3/34/Phoenix_Chinese.svg/180px-Phoenix_Chinese.svg.png">
+	  <categoryLeaf title="凤凰" description="Ifeng" feed="http://shumark.herokuapp.com/xml/channel_ifeng.xml" />
+	</category>
+
 	<category title="体育 - Sport" description="体育 - Sport" sd_img="http://www.e-steroid.com/wp-content/uploads/2009/06/steroids-use-in-sports.jpg" hd_img="http://www.e-steroid.com/wp-content/uploads/2009/06/steroids-use-in-sports.jpg">
 		<categoryLeaf title="NBA" description="NBA" feed="http://shumark.herokuapp.com/xml/channel_nba.xml" />
 	</category>

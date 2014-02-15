@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed>
+	<!-- resultLength indicates the total number of results for this feed -->
+	<resultLength>4</resultLength>
+	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
+	<endIndex>1</endIndex>
+
+	<item sdImg="http://a2.mzstatic.com/us/r30/Purple/v4/31/5c/b6/315cb676-e6ea-e964-dec6-22aede499d4b/icon_256.png" hdImg="http://a2.mzstatic.com/us/r30/Purple/v4/31/5c/b6/315cb676-e6ea-e964-dec6-22aede499d4b/icon_256.png">
+		<title>ifeng - HD</title>
+		<contentId>10011</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://live.3gv.ifeng.com/live/FHZXHD.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://images.rologo.com/uploads/2012/01/PhonixTVlogoHK.png" hdImg="http://images.rologo.com/uploads/2012/01/PhonixTVlogoHK.png">
+		<title>IFeng HK</title>
+		<contentId>10012</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://live.3gv.ifeng.com/live/hongkong.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://d3u20pllglzex1.cloudfront.net/channel-ifeng/covers/1829-1374974545.jpg" hdImg="http://d3u20pllglzex1.cloudfront.net/channel-ifeng/covers/1829-1374974545.jpg">
+		<title>IFeng Zhongwen</title>
+		<contentId>10013</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://live.3gv.ifeng.com/live/hls/2500.m3u8</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+        <item sdImg="http://d3u20pllglzex1.cloudfront.net/channel-ifeng/covers/1830-1374974546.jpg" hdImg="http://d3u20pllglzex1.cloudfront.net/channel-ifeng/covers/1830-1374974546.jpg">
+		<title>IFeng Zixun</title>
+		<contentId>10014</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://web-play.pptv.com/web-m3u8-300311.m3u8?type=m3u8.web.pad</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>
+
+</feed>
