@@ -4,21 +4,6 @@
 	<resultLength>12</resultLength>
 	<!-- endIndix  indicates the number of results for this *paged* section of the feed -->
 	<endIndex>1</endIndex>
-	<item sdImg="http://p1.img.cctvpic.com/nettv/cctv/cctv1/20101228/images/100762_1293500335146.jpg" hdImg="http://p1.img.cctvpic.com/nettv/cctv/cctv1/20101228/images/100762_1293500335146.jpg">
-		<title>CCTV-1</title>
-		<contentId>30001</contentId>
-		<contentType>News</contentType>
-		<contentQuality>HD</contentQuality>
-		<streamFormat>hls</streamFormat>
-		<media>
-			<streamQuality>HD</streamQuality>
-			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://117.135.161.16/live/5/30/53c90798941c4dada89edbeaa09c20a8.m3u8?type=tv</streamUrl>
-		</media>
-                <synopsis>Live Stream</synopsis>
-                <genres>Live</genres>
-                <runtime></runtime>
-	</item>	
 
 	<item sdImg="http://p4.img.cctvpic.com/nettv/cctv/cctv2/20101228/images/103441_1293517690108.jpg" hdImg="http://p4.img.cctvpic.com/nettv/cctv/cctv2/20101228/images/103441_1293517690108.jpg">
 		<title>CCTV-2</title>
@@ -243,5 +228,22 @@
                 <genres>Live</genres>
                 <runtime></runtime>
 	</item>
+
+	<item sdImg="http://p1.img.cctvpic.com/nettv/cctv/cctv1/20101228/images/100762_1293500335146.jpg" hdImg="http://p1.img.cctvpic.com/nettv/cctv/cctv1/20101228/images/100762_1293500335146.jpg">
+		<title>CCTV-1</title>
+		<contentId>30016</contentId>
+		<contentType>News</contentType>
+		<contentQuality>HD</contentQuality>
+		<streamFormat>hls</streamFormat>
+		<media>
+			<streamQuality>HD</streamQuality>
+			<streamBitrate>0</streamBitrate>
+			<streamUrl>http://117.135.161.16/live/5/30/53c90798941c4dada89edbeaa09c20a8.m3u8?type=tv</streamUrl>
+		</media>
+                <synopsis>Live Stream</synopsis>
+                <genres>Live</genres>
+                <runtime></runtime>
+	</item>	
+
         
 </feed>
