@@ -13,7 +13,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba1/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba1/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -28,7 +28,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba2/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba2/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -44,7 +44,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba3/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba3/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -60,7 +60,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba4/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba4/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -76,7 +76,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba5/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba5/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -92,7 +92,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba6/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba6/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -108,7 +108,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba7/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba7/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
@@ -124,7 +124,7 @@
 		<media>
 			<streamQuality>HD</streamQuality>
 			<streamBitrate>0</streamBitrate>
-			<streamUrl>http://nbalive4.bestv.com.wscdns.com/live/hdnba8/workflow3/mnf.m3u8</streamUrl>
+			<streamUrl>http://nbaapp.bestv.com.wscdns.com/live/hdnba8/workflow3/mnf.m3u8</streamUrl>
 		</media>
                 <synopsis>Live Stream</synopsis>
                 <genres>Live</genres>
